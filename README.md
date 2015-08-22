@@ -1,3 +1,3 @@
 # BBTweaks
 
-* Mod for Tweaking the nuts and Bolts pack by the Breakin Blocks Community
+* Mod for Tweaking "Nuts & Bolts" modpack pack by the Breakin Blocks Community
