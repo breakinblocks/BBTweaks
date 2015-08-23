@@ -10,12 +10,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.block.BlockFlower;
-import net.minecraft.block.BlockGrass;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.EntityFX;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import WayofTime.alchemicalWizardry.api.alchemy.energy.ReagentRegistry;
@@ -28,11 +28,11 @@ import WayofTime.alchemicalWizardry.common.tileEntity.TEAltar;
 
 public class RitualEffectNatureLeech extends RitualEffect {
 	public int reagentDrain = 2;
-	public static final int timeDelay = 30;
+	public static final int timeDelay = 80;
 
 	@Override
 	public int getCostPerRefresh() {
-		return 50;
+		return 100;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -64,17 +64,19 @@ public class RitualEffectNatureLeech extends RitualEffect {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void randomDisplay(World world, int x, int y, int z, Random random) {
+	public void genParticle(World world, int x, int y, int z, Random random) {
 		float f1 = (float) x + 0.5f;
 		float f2 = (float) y + 1.1f;
 		float f3 = (float) z + 0.5f;
-		float f4 = random.nextFloat() * 0.6F - 0.3F;
-		float f5 = random.nextFloat() * -0.6F - -0.3F;
-		world.spawnParticle("smoke", (double) f1 + f4, (double) f2, (double) f3
-				+ f5, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("lava", (double) f1 + f4, (double) f2, (double) f3
-				+ f5, 0.5D, 0.9D, 0.3D);
 
+		
+        EntityFX fx = Minecraft.getMinecraft().renderGlobal.doSpawnParticle("reddust", f1, f2, f3, 0.0D, 0.0D, 0.0D);
+        if(fx != null) {
+          fx.setRBGColorF(0.2f, 0.8f, 0.4f);
+          fx.motionY *= 0.5f;
+          
+        }
+        world.playSoundEffect((double) x + 0.5D, (double) y + 0.5D, (double) z + 0.5D, "step.grass", 0.6F, world.rand.nextFloat() * 0.1F + 0.9F);
 	}
 
 	@Override
@@ -116,8 +118,10 @@ public class RitualEffectNatureLeech extends RitualEffect {
 
 				if (pos != null) {
 					if (random.nextInt(100) < 20) {
-						if (!world.isRemote)
-							this.randomDisplay(world, x, y, z, random);
+						
+							this.genParticle(world, pos[0], pos[1], pos[2], random);
+							
+							
 						world.setBlockToAir(pos[0], pos[1], pos[2]);
 						eaten++;
 						if (radius == 5)
@@ -133,18 +137,18 @@ public class RitualEffectNatureLeech extends RitualEffect {
 									if (world.getTileEntity(x + i, y + k, z + j) instanceof TEAltar) {
 										tileAltar = (TEAltar) world.getTileEntity(x + i, y + k, z + j);
 										testFlag = true;
+										
 									}
 								}
 							}
 						}
 						if (!testFlag) {
+							
 							return; //No altar in range, abandon ship!
 						}
 						else
 						{
-							if (SoulNetworkHandler.getPlayerForUsername(owner) != null && tileAltar != null){
-									tileAltar.sacrificialDaggerCall(eaten*15, true);
-							}
+									tileAltar.sacrificialDaggerCall(eaten*5, true);
 						} 
 					
 
