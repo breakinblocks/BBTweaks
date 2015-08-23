@@ -5,6 +5,7 @@ package rocks.boltsandnuts.bbtweaks;
  * If you wish to add a description to a class, or extend/change an existing one, submit a PR with your changes.
  */
 
+import WayofTime.alchemicalWizardry.api.rituals.Rituals;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -23,10 +24,14 @@ import rocks.boltsandnuts.bbtweaks.command.CommnandNab;
 import rocks.boltsandnuts.bbtweaks.items.ItemRecipeRegistry;
 import rocks.boltsandnuts.bbtweaks.items.ItemRegistry;
 import rocks.boltsandnuts.bbtweaks.proxies.CommonProxy;
+import rocks.boltsandnuts.bbtweaks.rituals.RitualEffectDev;
+import rocks.boltsandnuts.bbtweaks.rituals.RitualEffectNatureLeech;
 import rocks.boltsandnuts.bbtweaks.util.EventHandler;
 import rocks.boltsandnuts.bbtweaks.util.OreDictHandler;
 import rocks.boltsandnuts.bbtweaks.util.TextHelper;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.launchwrapper.Launch;
+import net.minecraft.util.StatCollector;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,7 +39,9 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings("unused")
 @Mod(modid = ModInformation.ID, name = ModInformation.NAME, version = ModInformation.VERSION, dependencies = ModInformation.DEPEND, guiFactory = ModInformation.GUIFACTORY)
 public class BBTweaks {
-
+	 
+	public static       boolean isDevEnv     = (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
+	 
     @SidedProxy(clientSide = ModInformation.CLIENTPROXY, serverSide = ModInformation.COMMONPROXY)
     public static CommonProxy proxy;
 
@@ -65,13 +72,16 @@ public class BBTweaks {
         ItemRecipeRegistry.registerItemRecipes();
         BlockRecipeRegistry.registerBlockRecipes();
         BBTweaksGuide.buildGuide(); //Register GuideBook
-        
+        if (isDevEnv)
+           Rituals.registerRitual("ritualDev", 1, 1, new RitualEffectDev(), StatCollector.translateToLocal("ritual.bbtweaks.dev"));
+        Rituals.registerRitual("ritualLeech", 1, 1, new RitualEffectNatureLeech(), StatCollector.translateToLocal("ritual.bbtweaks.leech"));
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         logger.info(TextHelper.localize("info." + ModInformation.ID + ".console.load.postInit"));
-     
+        
+        	 
     }
     
 	@Mod.EventHandler

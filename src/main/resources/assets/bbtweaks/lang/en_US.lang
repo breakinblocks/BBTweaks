@@ -35,7 +35,9 @@ This items can be bound to a Thaumaturge with a right click or unbound with shif
 Will require their own bound manuscript. 
 
 
-
+#BloodMagic
+ritual.bbtweaks.dev=Ritual of Ritual Building
+ritual.bbtweaks.leech=Ritual of Nature Leech
 
 #Book
 book.bbtweaks.title=Nuts and Bolts Tweaks
