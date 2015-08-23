@@ -33,3 +33,39 @@ tc.research_page.bbtweaks.1=Research can be tedious and time consuming, you have
 of your arcane knowledge to another, and to receive it in return. The first step towards blending researches is the Melding Manuscript<br>
 This items can be bound to a Thaumaturge with a right click or unbound with shift+right click. Each Thaumaturge wishing to share knowledge<br>
 Will require their own bound manuscript. 
+
+
+
+
+#Book
+book.bbtweaks.title=Nuts and Bolts Tweaks
+book.bbtweaks.welcome=Welcome to Nuts and Bolts! Within you will find information about all the additions and Tweaks this mod and pack have to offer.
+book.bbtweaks.displayname=Nuts & Bolts Tweaks Guide
+
+book.bbtweaks.botania.relics.body=
+book.bbtweaks.botania.manasteel.body=
+book.bbtweaks.botania.manapetals.body=
+book.bbtweaks.botania.flowers.body=
+book.bbtweaks.botania.manatablet.body=
+book.bbtweaks.botania.manapools.body=
+book.bbtweaks.botania.endoflame.body=
+book.bbtweaks.mekanism.universalcables.body=
+book.bbtweaks.mekanism.compressedmaterials.body=
+book.bbtweaks.mekanism.digitalminer.body=
+book.bbtweaks.mekanism.powergeneration.body=
+book.bbtweaks.mekanism.saltproduction.body=
+book.bbtweaks.bloodmagic.bloodautomation.body=
+book.bbtweaks.bloodmagic.nova.body=
+book.bbtweaks.bloodmagic.rituals.body=
+book.bbtweaks.draconicevolution.disabled.body=
+book.bbtweaks.draconicevolution.recipechanges.body=
+book.bbtweaks.rftools.disabled.body=
+book.bbtweaks.rftools.dimlets.body=
+book.bbtweaks.rftools.recipes.body=
+book.bbtweaks.buildcraft.quarry.body=
+book.bbtweaks.extrautilities.enderquarry.body=
+book.bbtweaks.extrautilities.kikoku.body=
+book.bbtweaks.oregen.overworld.body=
+book.bbtweaks.oregen.nether.body=
+book.bbtweaks.oregen.end.body=
+book.bbtweaks.oregen.intergalactic.body=
