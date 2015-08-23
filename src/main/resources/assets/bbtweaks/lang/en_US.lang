@@ -1,0 +1,35 @@
+#CREATIVE TAB
+itemGroup.bbtweaks.creativeTab=Breakin Blocks Tweaks
+
+#CONFIG GUI
+gui.bbtweaks.config.title=bbtweaks Configuration
+
+#BLOCKS
+#tile.bbtweaks.quisque.lapis.block.name=Lapis Quisque Block
+#tile.bbtweaks.quisque.lapis.ore.name=Lapis Quisque Ore
+
+#ITEMS
+item.bbtweaks.manuscript.name=Melding Manuscript
+item.bbtweaks.inertcore.name=Inert Gaia Core
+item.bbtweaks.awakenedcore.name=Awakened Gaia Core
+
+#TOOLTIPS
+#info.bbtweaks.tooltip.fire=This book will set you on fire.
+
+#CHAT
+#info.bbtweaks.chat.sneak=Sneak to set yourself ablaze.
+
+#CONSOLE LOG
+info.bbtweaks.console.config.refresh=Refreshing configuration file.
+info.bbtweaks.console.load.preInit=Begin Pre-initialization
+info.bbtweaks.console.load.init=Begin Initialization
+info.bbtweaks.console.load.postInit=Begin Post-initialization
+
+# Research
+tc.research_category.bbtweaks=Mind Meld
+tc.research_name.bbtweaks=Melding Manuscript
+tc.research_text.bbtweaks=My mind to your mind....
+tc.research_page.bbtweaks.1=Research can be tedious and time consuming, you have discovered a way to transfer some <br>
+of your arcane knowledge to another, and to receive it in return. The first step towards blending researches is the Melding Manuscript<br>
+This items can be bound to a Thaumaturge with a right click or unbound with shift+right click. Each Thaumaturge wishing to share knowledge<br>
+Will require their own bound manuscript. 

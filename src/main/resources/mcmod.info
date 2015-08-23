@@ -1,13 +1,13 @@
 [
 {
-  "modid": "mindmeld",
-  "name": "MindMeld",
-  "description": "Share research in a non-cheaty way!",
+  "modid": "bbtweaks",
+  "name": "BBTweaks",
+  "description": "Tweaks for Nuts and Bolts",
   "version": "0.0.1",
   "mcversion": "1.7.10",
   "url": "",
   "updateUrl": "",
-  "authorList": ["downslope7", "Saereth"],
+  "authorList": ["downslope7", "Saereth", "Milkyway3640"],
   "credits": "Rocco, my pet rock.",
   "logoFile": "",
   "screenshots": [],
