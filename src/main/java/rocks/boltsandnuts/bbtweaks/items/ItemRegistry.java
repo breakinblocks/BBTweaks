@@ -26,6 +26,7 @@ public class ItemRegistry {
         awakenedCore = new ItemAwakenedCore();
         GameRegistry.registerItem(awakenedCore, "ItemAwakenedCore");
         
+        
     }
     
     

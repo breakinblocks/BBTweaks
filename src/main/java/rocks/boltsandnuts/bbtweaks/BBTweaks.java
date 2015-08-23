@@ -11,12 +11,14 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import rocks.boltsandnuts.bbtweaks.blocks.BlockRecipeRegistry;
 import rocks.boltsandnuts.bbtweaks.blocks.BlockRegistry;
 import rocks.boltsandnuts.bbtweaks.client.gui.CreativeTabBaseMod;
 import rocks.boltsandnuts.bbtweaks.client.gui.GuiHandler;
+import rocks.boltsandnuts.bbtweaks.command.CommnandNab;
 import rocks.boltsandnuts.bbtweaks.items.ItemRecipeRegistry;
 import rocks.boltsandnuts.bbtweaks.items.ItemRegistry;
 import rocks.boltsandnuts.bbtweaks.proxies.CommonProxy;
@@ -61,6 +63,7 @@ public class BBTweaks {
 
         ItemRecipeRegistry.registerItemRecipes();
         BlockRecipeRegistry.registerBlockRecipes();
+        BBTweaksGuide.buildGuide(); //Register GuideBook
         
     }
 
@@ -69,4 +72,12 @@ public class BBTweaks {
         logger.info(TextHelper.localize("info." + ModInformation.ID + ".console.load.postInit"));
      
     }
+    
+	@Mod.EventHandler
+	public void onFMLServerStart(FMLServerStartingEvent event)
+	{
+		event.registerServerCommand(new CommnandNab());
+	
+	}
+    
 }
