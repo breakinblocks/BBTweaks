@@ -1,8 +1,41 @@
-.gradle
-build/
+*.class
 
-# Ignore Gradle GUI config
-gradle-app.setting
+# Package Files #
+*.jar
+*.war
+*.ear
 
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# 
+.gradle/
+run/
+bin/
+
+# intellij
+mindmeld.iml
+mindmeld.ipr
+mindmeld.iws
+
+
+# eclipse
+.classpath
+.project
+.settings/
+
+# if your cwd isn't set to run/
+config/
+mods/
+logs/
+saves/
+resourcepacks
+asm/
+screenshots/
+crash-reports/
+*.properties
+build.properties
+*.txt
+screenshots/
+usernamecache.json
+/build/
