@@ -4,13 +4,13 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.lwjgl.input.Keyboard;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import rocks.boltsandnuts.bbtweaks.util.MinecraftHelper;
 import rocks.boltsandnuts.bbtweaks.util.TextHelper;
 import rocks.boltsandnuts.bbtweaks.util.NBTHandlers.ItemNBTHandler;
 import thaumcraft.common.lib.research.ResearchManager;
+import net.java.games.input.Keyboard;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -22,6 +22,7 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
+import rocks.boltsandnuts.bbtweaks.util.KeyboardHelper;
 
 /**
  * The overhauled sharing tome.
@@ -31,7 +32,7 @@ public class ItemMeldingManuscript extends ItemBase {
 
 	private static final String TAG_PLAYER = "player";
 	private static final String NOT_ASSIGNED = "[none]";
-
+	KeyboardHelper kb =  new KeyboardHelper();
 	public ItemMeldingManuscript() {
 		super("manuscript", "meldingManuscript");
 		setMaxStackSize(1);
@@ -53,19 +54,11 @@ public class ItemMeldingManuscript extends ItemBase {
 		return retVals;
 	}
 
+	
 	@Override
 	public ItemStack onItemRightClick(ItemStack IStack, World VarWorld,
 			EntityPlayer EntityP) {
 		ResearchManager tcproxy = new thaumcraft.common.lib.research.ResearchManager();
-
-		if (Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)
-				|| Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
-			String name = NOT_ASSIGNED;
-			setPlayerName(IStack, name);
-			if (!VarWorld.isRemote)
-				EntityP.addChatMessage(new ChatComponentTranslation(
-						"The Manuscript is now unbound."));
-		} else {
 			String name = getPlayerName(IStack);
 			if (name.endsWith(NOT_ASSIGNED)) {
 				setPlayerName(IStack, EntityP.getGameProfile().getName());
@@ -75,6 +68,7 @@ public class ItemMeldingManuscript extends ItemBase {
 					EntityP.addChatMessage(new ChatComponentTranslation(
 							"Research Written."));
 					setInfo = "Currently Bound to: " + getPlayerName(IStack);
+					if (MinecraftHelper.isClientSide())
 					setToolTipData(IStack);
 				}
 			} else {
@@ -102,7 +96,7 @@ public class ItemMeldingManuscript extends ItemBase {
 				}
 
 			}
-		}
+		
 		return IStack;
 	}
 	
@@ -113,7 +107,7 @@ public class ItemMeldingManuscript extends ItemBase {
 			if(inv.getStackInSlot(i) != null)
 			{
 				ItemStack j = inv.getStackInSlot(i);
-				if(j.getItem() != null && j.getItem() == removeitem.getItem())
+				if(j.getItem() != null && j.getItem() == removeitem.getItem() && ItemStack.areItemStackTagsEqual(j, removeitem))
 				{
 					inv.setInventorySlotContents(i, null);
 				}

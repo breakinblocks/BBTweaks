@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.BlockDoublePlant;
@@ -14,8 +12,6 @@ import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityFX;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import WayofTime.alchemicalWizardry.api.alchemy.energy.ReagentRegistry;
@@ -63,27 +59,13 @@ public class RitualEffectNatureLeech extends RitualEffect {
 		return ritualBlocks;
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void genParticle(World world, int x, int y, int z, Random random) {
-		float f1 = (float) x + 0.5f;
-		float f2 = (float) y + 1.1f;
-		float f3 = (float) z + 0.5f;
-
-		
-        EntityFX fx = Minecraft.getMinecraft().renderGlobal.doSpawnParticle("reddust", f1, f2, f3, 0.0D, 0.0D, 0.0D);
-        if(fx != null) {
-          fx.setRBGColorF(0.2f, 0.8f, 0.4f);
-          fx.motionY *= 0.5f;
-          
-        }
-        world.playSoundEffect((double) x + 0.5D, (double) y + 0.5D, (double) z + 0.5D, "step.grass", 0.6F, world.rand.nextFloat() * 0.1F + 0.9F);
-	}
 
 	@Override
 	public void performEffect(IMasterRitualStone ritualStone) {
 		String owner = ritualStone.getOwner();
 		Random random = new Random();
 		World world = ritualStone.getWorld();
+		
 		int x = ritualStone.getXCoord();
 		int y = ritualStone.getYCoord();
 		int z = ritualStone.getZCoord();
@@ -118,8 +100,20 @@ public class RitualEffectNatureLeech extends RitualEffect {
 
 				if (pos != null) {
 					if (random.nextInt(100) < 20) {
-						
-							this.genParticle(world, pos[0], pos[1], pos[2], random);
+
+						SpellHelper.sendParticleToAllAround(world, pos[0], pos[1], pos[2], 30,
+								world.provider.dimensionId, "reddust", pos[0]
+								+ smallGauss(0.1D), pos[1] + smallGauss(0.1D), pos[2]
+								+ smallGauss(0.1D), 0.5D, 0.5D, 0.5D);
+						SpellHelper.sendParticleToAllAround(world, pos[0], pos[1], pos[2], 30,
+								world.provider.dimensionId, "reddust", pos[0]
+								+ smallGauss(0.1D), pos[1] + smallGauss(0.12D),
+								pos[2] + smallGauss(0.1D), 0.5D, 0.5D, 0.5D);
+							world.playSoundEffect((double) pos[0] + 0.5D,
+									(double) pos[1] + 0.5D, (double) pos[2] + 0.5D,
+									"step.grass", 0.2F,
+									world.rand.nextFloat() * 0.1F + 0.9F);
+
 							
 							
 						world.setBlockToAir(pos[0], pos[1], pos[2]);
@@ -164,6 +158,11 @@ public class RitualEffectNatureLeech extends RitualEffect {
 
 }
 
+	public double smallGauss(double d) {
+		Random myRand = new Random();
+		return (myRand.nextFloat() - 0.5D) * d;
+	}
+	
 public int[] getNextBlock(World world, int ritualX, int ritualZ,
 		int radius, IMasterRitualStone ritualStone) {
 	int startChunkX = ritualX >> 4;

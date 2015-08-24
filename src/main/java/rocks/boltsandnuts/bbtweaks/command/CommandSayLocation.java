@@ -28,7 +28,6 @@ public class CommandSayLocation extends CommandBase {
 		String loc = new String();
 		String name = new String();
 		double x, y, z;
-		int dim;
 		EntityPlayer player = command.getEntityWorld().getPlayerEntityByName(
 				command.getCommandSenderName());
 		name = player.getDisplayName();
@@ -37,8 +36,6 @@ public class CommandSayLocation extends CommandBase {
 			x = player.posX;
 			y = player.posY;
 			z = player.posZ;
-			dim = player.dimension;
-
 			loc = String.format(EnumChatFormatting.LIGHT_PURPLE
 					+ "%s is @" + EnumChatFormatting.GREEN + " ("
 					+ EnumChatFormatting.ITALIC.DARK_GREEN + "%.1f"

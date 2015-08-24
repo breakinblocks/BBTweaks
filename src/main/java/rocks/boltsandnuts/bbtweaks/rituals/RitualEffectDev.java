@@ -21,7 +21,8 @@ public class RitualEffectDev extends RitualEffect {
         return 10;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<RitualComponent> getRitualComponentList() {
         ArrayList<RitualComponent> ritualBlocks = new ArrayList();
         ritualBlocks.add(new RitualComponent(0, -1, 0, RitualComponent.DUSK));
