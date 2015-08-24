@@ -13,12 +13,12 @@ public class ConfigHandler {
     public static Configuration config;
 
     // Sections to add to the config
-    public static String exampleSection = "Example Section";
-    public static String generation = "Generation";
+    public static String exampleSection = "Main Section";
+//    public static String generation = "Generation";
 
     // Options in the config
     public static boolean exampleOption;
-    public static boolean enableGeneration;
+  //  public static boolean enableGeneration;
 
     public static void init(File file) {
         config = new Configuration(file);
@@ -26,10 +26,10 @@ public class ConfigHandler {
     }
 
     public static void syncConfig() {
-        config.addCustomCategoryComment(exampleSection, "Example section comment");
-        config.addCustomCategoryComment(generation, "This section contains all settings regarding ore generation.");
+        config.addCustomCategoryComment(exampleSection, "Reserved for Future use");
+//        config.addCustomCategoryComment(generation, "This section contains all settings regarding ore generation.");
 
-        exampleOption = config.get(exampleSection, "exampleOption", true, "Description of option goes here.").getBoolean(exampleOption);
+        exampleOption = config.get(exampleSection, "notReallyAnOption", true, "if you choose not to decide, you still have made a choice.").getBoolean(exampleOption);
         config.save();
     }
 }

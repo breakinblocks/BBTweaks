@@ -97,6 +97,7 @@ public class BBTweaksGuide {
 	    builder.setUnlocWelcomeMessage("book.bbtweaks.welcome");
 	    builder.setUnlocDisplayName("book.bbtweaks.displayname");
 	    builder.setBookColor(Color.BLUE);
+	    builder.setSpawnWithBook(true);
 	    myBook = builder.build();
 	    GuideRegistry.registerBook(myBook);
 	}
