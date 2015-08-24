@@ -6,6 +6,7 @@ package rocks.boltsandnuts.bbtweaks;
  */
 
 import WayofTime.alchemicalWizardry.api.rituals.Rituals;
+import WayofTime.alchemicalWizardry.common.renderer.AlchemyCircleRenderer;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -24,6 +25,7 @@ import rocks.boltsandnuts.bbtweaks.command.CommnandNab;
 import rocks.boltsandnuts.bbtweaks.items.ItemRecipeRegistry;
 import rocks.boltsandnuts.bbtweaks.items.ItemRegistry;
 import rocks.boltsandnuts.bbtweaks.proxies.CommonProxy;
+import rocks.boltsandnuts.bbtweaks.rituals.RitualEffectCulling;
 import rocks.boltsandnuts.bbtweaks.rituals.RitualEffectDev;
 import rocks.boltsandnuts.bbtweaks.rituals.RitualEffectNatureLeech;
 import rocks.boltsandnuts.bbtweaks.util.EventHandler;
@@ -31,6 +33,7 @@ import rocks.boltsandnuts.bbtweaks.util.OreDictHandler;
 import rocks.boltsandnuts.bbtweaks.util.TextHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.launchwrapper.Launch;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 import org.apache.logging.log4j.LogManager;
@@ -73,8 +76,10 @@ public class BBTweaks {
         BlockRecipeRegistry.registerBlockRecipes();
         BBTweaksGuide.buildGuide(); //Register GuideBook
         if (isDevEnv)
-           Rituals.registerRitual("ritualDev", 1, 1, new RitualEffectDev(), StatCollector.translateToLocal("ritual.bbtweaks.dev"));
-        Rituals.registerRitual("ritualLeech", 1, 1, new RitualEffectNatureLeech(), StatCollector.translateToLocal("ritual.bbtweaks.leech"));
+        	
+        Rituals.registerRitual("ritualDev", 1, 1, new RitualEffectDev(), StatCollector.translateToLocal("ritual.bbtweaks.dev"));
+        Rituals.registerRitual("ritualLeech", 1, 15000, new RitualEffectNatureLeech(), StatCollector.translateToLocal("ritual.bbtweaks.leech"), new AlchemyCircleRenderer(new ResourceLocation("alchemicalwizardry:textures/models/SimpleTransCircle.png"), 0, 0, 0, 255, 0, 0.501, 0.501, 0, 1.5, false));
+        Rituals.registerRitual("ritualCulling", 1, 50000, new RitualEffectCulling(), StatCollector.translateToLocal("ritual.bbtweaks.culling"), new AlchemyCircleRenderer(new ResourceLocation("alchemicalwizardry:textures/models/SimpleTransCircle.png"), 0, 0, 0, 255, 0, 0.501, 0.501, 0, 1.5, false));
     }
 
     @Mod.EventHandler

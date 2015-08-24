@@ -148,7 +148,7 @@ public class RitualEffectNatureLeech extends RitualEffect {
 						}
 						else
 						{
-									tileAltar.sacrificialDaggerCall(eaten*5, true);
+									tileAltar.sacrificialDaggerCall(eaten*15, true);
 						} 
 					
 

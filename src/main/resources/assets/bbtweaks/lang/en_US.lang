@@ -38,6 +38,8 @@ Will require their own bound manuscript.
 #BloodMagic
 ritual.bbtweaks.dev=Ritual of Ritual Building
 ritual.bbtweaks.leech=Ritual of Nature Leech
+ritual.bbtweaks.culling=Ritual of Culling
+death.attack.bbtweaks.absolute=%1$s has been culled by blood magic.
 
 #Book
 book.bbtweaks.title=Nuts and Bolts Tweaks
