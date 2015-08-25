@@ -102,11 +102,9 @@ public class RitualEffectCulling extends RitualEffect {
 				ex = livingEntity.posX;
 				ey = livingEntity.posY;
 				ez = livingEntity.posZ;
-
+				
 				PotionEffect effect = livingEntity
-						.getActivePotionEffect(Potion.damageBoost); // Cursed
-				// earth
-				// boosted
+						.getActivePotionEffect(Potion.damageBoost); // Cursed earth boosted
 
 				if (effect == null) {
 					int p = 0;
@@ -148,6 +146,7 @@ public class RitualEffectCulling extends RitualEffect {
 					}
 				}
 			}
+			
 			SoulNetworkHandler.syphonFromNetwork(owner, getCostPerRefresh()
 					* entityCount);
 
@@ -170,10 +169,12 @@ public class RitualEffectCulling extends RitualEffect {
 	public List<RitualComponent> getRitualComponentList() {
 		@SuppressWarnings("unchecked")
 		ArrayList<RitualComponent> cullingRitual = new ArrayList();
-		cullingRitual.add(new RitualComponent(1, 0, 1, RitualComponent.DUSK));
-		cullingRitual.add(new RitualComponent(-1, 0, 1, RitualComponent.DUSK));
-		cullingRitual.add(new RitualComponent(1, 0, -1, RitualComponent.DUSK));
-		cullingRitual.add(new RitualComponent(-1, 0, -1, RitualComponent.DUSK));
+		
+		cullingRitual.add(new RitualComponent(1, 0, 1, RitualComponent.FIRE));
+        cullingRitual.add(new RitualComponent(-1, 0, 1, RitualComponent.FIRE));
+        cullingRitual.add(new RitualComponent(1, 0, -1, RitualComponent.FIRE));
+        cullingRitual.add(new RitualComponent(-1, 0, -1, RitualComponent.FIRE));
+        
 		cullingRitual.add(new RitualComponent(2, -1, 2, RitualComponent.DUSK));
 		cullingRitual.add(new RitualComponent(2, -1, -2, RitualComponent.DUSK));
 		cullingRitual.add(new RitualComponent(-2, -1, 2, RitualComponent.DUSK));
