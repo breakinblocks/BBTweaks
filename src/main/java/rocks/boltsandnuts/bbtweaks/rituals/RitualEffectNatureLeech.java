@@ -189,10 +189,8 @@ public int[] getNextBlock(World world, int ritualX, int ritualZ,
 													|| thisBlock instanceof BlockLeaves
 													|| thisBlock instanceof BlockFlower
 													|| thisBlock instanceof BlockTallGrass
-													|| thisBlock instanceof BlockDoublePlant) // found
-												// a
-												// plant
-
+													|| thisBlock instanceof BlockDoublePlant) 
+												if (!thisBlock.getUnlocalizedName().toLowerCase().contains("specialflower"))
 												return new int[] { wx, y, wz };
 										}
 									}
