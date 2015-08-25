@@ -183,14 +183,15 @@ public int[] getNextBlock(World world, int ritualX, int ritualZ,
 											int wx = chunkX * 16 + x;
 											int wz = chunkZ * 16 + z;
 											Block thisBlock = world.getBlock(wx, y, wz);
-
+											String blockName = thisBlock.getUnlocalizedName().toLowerCase();
 											if (thisBlock instanceof BlockCrops
 													|| thisBlock instanceof BlockLog
 													|| thisBlock instanceof BlockLeaves
 													|| thisBlock instanceof BlockFlower
 													|| thisBlock instanceof BlockTallGrass
-													|| thisBlock instanceof BlockDoublePlant) 
-												if (!thisBlock.getUnlocalizedName().toLowerCase().contains("specialflower"))
+													|| thisBlock instanceof BlockDoublePlant
+													|| blockName.contains("extrabiomesxl:flower")) 
+												if (!blockName.contains("specialflower") && !blockName.contains("shinyflower"))
 												return new int[] { wx, y, wz };
 										}
 									}
