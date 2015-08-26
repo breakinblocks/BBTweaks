@@ -38,7 +38,7 @@ public class CommandBB extends CommandBase {
 	
 	public static void giveBreakBit(ICommandSender command){
 			
-		long time=0, last=0, timeUntil=0;
+		long time=0, curTime=0, last=0, timeUntil=0;
 		String out;
 		EntityPlayer e = command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName());
 		NBTTagCompound tag = e.getEntityData();
@@ -46,15 +46,16 @@ public class CommandBB extends CommandBase {
 		NBTBase modeTag = tag.getTag("lastBB");
 		
 		if (modeTag != null) {
-			last =  ((NBTTagLong)modeTag).func_150291_c();
+			last =  ((NBTTagLong)modeTag).func_150291_c()/600000;
 			}
 		
-		time = System.currentTimeMillis();
+		curTime = System.currentTimeMillis();
+		time = curTime/600000;
 		
-		if ((time/last)/86400000 < 24 && last != 0)
+		if ((time-last) < 24 && last != 0)
 		{
-			timeUntil = 24 - ((time/last)/86400000);
-			out = "Try again in " + timeUntil + " Hours";
+			timeUntil = 24 - (time-last);
+			out = "Try again in " + timeUntil + " Hours." + " result:" + (time-last);// + " Last: " + last + " Time: " + curTime;
 			e.addChatMessage(new ChatComponentTranslation("You aren't eligible for another Breakbit yet."));
 			e.addChatMessage(new ChatComponentTranslation(out));
 			return;
@@ -66,8 +67,10 @@ public class CommandBB extends CommandBase {
 			e.addChatMessage(new ChatComponentTranslation("Not enough inventory Space."));
 		}
 		else{
+			//out = "Try again in " + timeUntil + " Hours" + " result:" + (time/last) + " Last: " + last + " Time: " + time;
+			//e.addChatMessage(new ChatComponentTranslation(out));
 			e.addChatMessage(new ChatComponentTranslation("Granted your Daily Invar BreakBit!"));
-			tag.setLong("lastBB", time);
+			tag.setLong("lastBB", curTime);
 
 		}
 		
