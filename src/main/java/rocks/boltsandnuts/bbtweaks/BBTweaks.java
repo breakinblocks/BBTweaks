@@ -20,6 +20,7 @@ import rocks.boltsandnuts.bbtweaks.blocks.BlockRecipeRegistry;
 import rocks.boltsandnuts.bbtweaks.blocks.BlockRegistry;
 import rocks.boltsandnuts.bbtweaks.client.gui.CreativeTabBaseMod;
 import rocks.boltsandnuts.bbtweaks.client.gui.GuiHandler;
+import rocks.boltsandnuts.bbtweaks.command.CommandBB;
 import rocks.boltsandnuts.bbtweaks.command.CommandSayLocation;
 import rocks.boltsandnuts.bbtweaks.command.CommnandNab;
 import rocks.boltsandnuts.bbtweaks.items.ItemRecipeRegistry;
@@ -94,6 +95,7 @@ public class BBTweaks {
 	{
 		event.registerServerCommand(new CommnandNab());
 		event.registerServerCommand(new CommandSayLocation());
+		event.registerServerCommand(new CommandBB());
 	
 	}
     

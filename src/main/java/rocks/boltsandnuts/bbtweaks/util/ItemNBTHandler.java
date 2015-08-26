@@ -1,4 +1,4 @@
-package rocks.boltsandnuts.bbtweaks.util.NBTHandlers;
+package rocks.boltsandnuts.bbtweaks.util;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 

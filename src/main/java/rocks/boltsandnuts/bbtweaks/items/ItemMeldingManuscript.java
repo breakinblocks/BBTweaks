@@ -6,9 +6,9 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import rocks.boltsandnuts.bbtweaks.util.ItemNBTHandler;
 import rocks.boltsandnuts.bbtweaks.util.MinecraftHelper;
 import rocks.boltsandnuts.bbtweaks.util.TextHelper;
-import rocks.boltsandnuts.bbtweaks.util.NBTHandlers.ItemNBTHandler;
 import thaumcraft.common.lib.research.ResearchManager;
 import net.java.games.input.Keyboard;
 import net.minecraft.entity.player.EntityPlayer;

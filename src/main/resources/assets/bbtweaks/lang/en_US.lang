@@ -12,9 +12,16 @@ gui.bbtweaks.config.title=bbtweaks Configuration
 item.bbtweaks.manuscript.name=Melding Manuscript
 item.bbtweaks.inertcore.name=Inert Gaia Core
 item.bbtweaks.awakenedcore.name=Awakened Gaia Core
+item.bbtweaks.purifiedwill.name=Purified Will
 
 #TOOLTIPS
 #info.bbtweaks.tooltip.fire=This book will set you on fire.
+
+#Breakbits
+item.bbtweaks.breakbit_worldbreaker.name=World Breaker
+item.bbtweaks.breakbit_invar.name=Invar BreakBit
+item.bbtweaks.breakbit_electrum.name=Electrum BreakBit
+item.bbtweaks.breakbit_enderium.name=Enderium BreakBit
 
 #CHAT
 #info.bbtweaks.chat.sneak=Sneak to set yourself ablaze.

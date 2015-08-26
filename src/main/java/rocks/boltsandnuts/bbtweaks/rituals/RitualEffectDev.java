@@ -21,7 +21,7 @@ public class RitualEffectDev extends RitualEffect {
         return 10;
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
     public List<RitualComponent> getRitualComponentList() {
         ArrayList<RitualComponent> ritualBlocks = new ArrayList();

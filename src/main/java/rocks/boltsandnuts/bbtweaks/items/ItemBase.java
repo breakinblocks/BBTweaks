@@ -28,6 +28,7 @@ public class ItemBase extends Item {
 
         setUnlocalizedName(ModInformation.ID + "." + unlocName);
         setTextureName(ModInformation.ID + ":" + textureName);
+        
         setCreativeTab(BBTweaks.tabBaseMod);
         
     }

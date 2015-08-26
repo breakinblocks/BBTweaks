@@ -190,7 +190,7 @@ public int[] getNextBlock(World world, int ritualX, int ritualZ,
 													|| thisBlock instanceof BlockFlower
 													|| thisBlock instanceof BlockTallGrass
 													|| thisBlock instanceof BlockDoublePlant
-													|| blockName.contains("extrabiomesxl:flower")) 
+													|| blockName.contains("extrabiomesxl.flower")) 
 												if (!blockName.contains("specialflower") && !blockName.contains("shinyflower"))
 												return new int[] { wx, y, wz };
 										}

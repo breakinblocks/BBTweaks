@@ -1,9 +1,6 @@
 package rocks.boltsandnuts.bbtweaks;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +13,6 @@ import amerifrance.guideapi.api.base.Book;
 import amerifrance.guideapi.api.util.BookBuilder;
 import amerifrance.guideapi.categories.CategoryItemStack;
 import amerifrance.guideapi.entries.EntryText;
-import amerifrance.guideapi.pages.PageIRecipe;
 import amerifrance.guideapi.pages.PageUnlocText;
 
 public class BBTweaksGuide {
