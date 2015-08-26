@@ -1,5 +1,7 @@
 package rocks.boltsandnuts.bbtweaks.command;
 
+import java.util.Calendar;
+
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.Entity;
@@ -38,24 +40,30 @@ public class CommandBB extends CommandBase {
 	
 	public static void giveBreakBit(ICommandSender command){
 			
-		long time=0, curTime=0, last=0, timeUntil=0;
+		long curTime=0, Llast=0, timeUntil=0;
+		int time=0, last;
 		String out;
 		EntityPlayer e = command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName());
 		NBTTagCompound tag = e.getEntityData();
+		Calendar c=Calendar.getInstance();
 		
 		NBTBase modeTag = tag.getTag("lastBB");
 		
 		if (modeTag != null) {
-			last =  ((NBTTagLong)modeTag).func_150291_c()/600000;
+			Llast =  ((NBTTagLong)modeTag).func_150291_c();
 			}
 		
 		curTime = System.currentTimeMillis();
-		time = curTime/600000;
+		c.setTimeInMillis(curTime);
+		time=c.get(Calendar.HOUR);
+		c.setTimeInMillis(Llast);
+		last=c.get(Calendar.HOUR);
+		//out = "TimeHours: " + time + " lasthours: " + last;
 		
 		if ((time-last) < 24 && last != 0)
 		{
 			timeUntil = 24 - (time-last);
-			out = "Try again in " + timeUntil + " Hours." + " result:" + (time-last);// + " Last: " + last + " Time: " + curTime;
+			out = "Try again in " + timeUntil + " Hours.";// + " result:" + (time-last) + " Last: " + Llast + " Time: " + curTime;
 			e.addChatMessage(new ChatComponentTranslation("You aren't eligible for another Breakbit yet."));
 			e.addChatMessage(new ChatComponentTranslation(out));
 			return;
