@@ -1,7 +1,6 @@
 *.class
 
 # Package Files #
-*.jar
 *.war
 *.ear
 
@@ -9,7 +8,6 @@
 hs_err_pid*
 
 # 
-.gradle/
 run/
 bin/
 
@@ -33,9 +31,17 @@ resourcepacks
 asm/
 screenshots/
 crash-reports/
-*.properties
-build.properties
 *.txt
 screenshots/
 usernamecache.json
 /build/
+
+*.lock
+.gradle/2.1/taskArtifacts/fileHashes.bin
+.gradle/2.1/taskArtifacts/outputFileStates.bin
+.gradle/2.1/taskArtifacts/fileSnapshots.bin
+.gradle/2.1/taskArtifacts/taskArtifacts.bin
+.gradle/gradle.log
+gradle/wrapper/gradle-wrapper.jar
+.gradle/2.1/taskArtifacts/cache.properties
+gradle/wrapper/gradle-wrapper.properties
