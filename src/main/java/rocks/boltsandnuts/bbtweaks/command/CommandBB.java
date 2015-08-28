@@ -60,10 +60,10 @@ public class CommandBB extends CommandBase {
 		last=c.get(Calendar.HOUR);
 		//out = "TimeHours: " + time + " lasthours: " + last;
 		
-		if ((time-last) < 24 && last != 0)
+		if ((last+23-time) > 0 && Llast != 0)
 		{
-			timeUntil = 24 - (time-last);
-			out = "Try again in " + timeUntil + " Hours.";// + " result:" + (time-last) + " Last: " + Llast + " Time: " + curTime;
+			timeUntil = (last+23)-time;
+			out = "Try again in " + timeUntil + " Hours.";// + " result:" + ((last+24)-time) + " Last: " + last + " Time: " + time;
 			e.addChatMessage(new ChatComponentTranslation("You aren't eligible for another Breakbit yet."));
 			e.addChatMessage(new ChatComponentTranslation(out));
 			return;
@@ -75,8 +75,6 @@ public class CommandBB extends CommandBase {
 			e.addChatMessage(new ChatComponentTranslation("Not enough inventory Space."));
 		}
 		else{
-			//out = "Try again in " + timeUntil + " Hours" + " result:" + (time/last) + " Last: " + last + " Time: " + time;
-			//e.addChatMessage(new ChatComponentTranslation(out));
 			e.addChatMessage(new ChatComponentTranslation("Granted your Daily Invar BreakBit!"));
 			tag.setLong("lastBB", curTime);
 
