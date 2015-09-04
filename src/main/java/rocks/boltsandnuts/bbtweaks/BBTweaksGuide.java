@@ -1,4 +1,10 @@
 package rocks.boltsandnuts.bbtweaks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import amerifrance.guideapi.api.GuideRegistry;
 import amerifrance.guideapi.api.abstraction.CategoryAbstract;
 import amerifrance.guideapi.api.abstraction.EntryAbstract;
@@ -8,12 +14,6 @@ import amerifrance.guideapi.api.util.BookBuilder;
 import amerifrance.guideapi.categories.CategoryItemStack;
 import amerifrance.guideapi.entries.EntryText;
 import amerifrance.guideapi.pages.PageUnlocText;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BBTweaksGuide {
 
@@ -70,12 +70,12 @@ public class BBTweaksGuide {
 	    addPage("Quarry", buildcraft, "buildcraft.quarry.body");
 
 	    addPage("Ender Quarry", extrautilities, "extrautilities.enderquarry.body");
-	    addPage("The Legendary Kikoku", extrautilities, "extrautilities.kikoku.body");
+	    addPage("The Legendary Kikoku", extrautilities, "extrautilities.enderquarry.body");
 
 	    addPage("Overworld", oregen, "oregen.overworld.body");
-	    addPage("Nether", oregen, "oregen.nether.body");
-	    addPage("End", oregen, "oregen.end.body");
-	    addPage("InterGalactic", oregen, "oregen.intergalactic.body");
+	    addPage("Nether", oregen, "oregen.overworld.body");
+	    addPage("End", oregen, "oregen.overworld.body");
+	    addPage("InterGalactic", oregen, "oregen.overworld.body");
 	    
 	    ArrayList<CategoryAbstract> categories = new ArrayList<CategoryAbstract>();
         categories.add(new CategoryItemStack(botania, "Botania", new ItemStack(Items.flower_pot)));
