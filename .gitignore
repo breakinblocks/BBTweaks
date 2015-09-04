@@ -1,5 +1,8 @@
 *.class
-
+out/production
+*.iml
+*.ipr
+*.iws
 # Package Files #
 *.war
 *.ear
