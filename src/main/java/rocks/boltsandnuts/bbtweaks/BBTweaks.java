@@ -21,8 +21,8 @@ import rocks.boltsandnuts.bbtweaks.blocks.BlockRegistry;
 import rocks.boltsandnuts.bbtweaks.client.gui.CreativeTabBaseMod;
 import rocks.boltsandnuts.bbtweaks.client.gui.GuiHandler;
 import rocks.boltsandnuts.bbtweaks.command.CommandBB;
+import rocks.boltsandnuts.bbtweaks.command.CommandNab;
 import rocks.boltsandnuts.bbtweaks.command.CommandSayLocation;
-import rocks.boltsandnuts.bbtweaks.command.CommnandNab;
 import rocks.boltsandnuts.bbtweaks.items.ItemRecipeRegistry;
 import rocks.boltsandnuts.bbtweaks.items.ItemRegistry;
 import rocks.boltsandnuts.bbtweaks.proxies.CommonProxy;
@@ -93,7 +93,7 @@ public class BBTweaks {
 	@Mod.EventHandler
 	public void onFMLServerStart(FMLServerStartingEvent event)
 	{
-		event.registerServerCommand(new CommnandNab());
+		event.registerServerCommand(new CommandNab());
 		event.registerServerCommand(new CommandSayLocation());
 		event.registerServerCommand(new CommandBB());
 	

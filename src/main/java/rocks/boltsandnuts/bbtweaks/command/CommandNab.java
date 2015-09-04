@@ -7,7 +7,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentTranslation;
 
-public class CommnandNab extends CommandBase {
+public class CommandNab extends CommandBase {
 
 	@Override
 	public String getCommandName() {
@@ -22,7 +22,7 @@ public class CommnandNab extends CommandBase {
 
 	@Override
 	public void processCommand(ICommandSender command, String[] p_71515_2_) {
-		CommnandNab.giveBook(command);
+		CommandNab.giveBook(command);
 		return;
 	}
 

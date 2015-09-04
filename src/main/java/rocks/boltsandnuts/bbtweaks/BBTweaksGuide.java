@@ -40,7 +40,8 @@ public class BBTweaksGuide {
 	    List<EntryAbstract> buildcraft  = new ArrayList<EntryAbstract>();
 	    List<EntryAbstract> extrautilities  = new ArrayList<EntryAbstract>();
 	    List<EntryAbstract> oregen  = new ArrayList<EntryAbstract>();
-	    
+	    List<EntryAbstract> commands  = new ArrayList<EntryAbstract>();
+	    List<EntryAbstract> other  = new ArrayList<EntryAbstract>();
 	    
 	    addPage("Relics", botania, "botania.relics.body");
 	    addPage("Manasteel", botania, "botania.manasteel.body");
@@ -58,7 +59,9 @@ public class BBTweaksGuide {
 	    
 	    addPage("Blood Automation", bloodmagic, "bloodmagic.bloodautomation.body");
 	    addPage("NOVA", bloodmagic, "bloodmagic.nova.body");
-	    addPage("Rituals", bloodmagic, "bloodmagic.rituals.body");
+	    addPage("Ritual of Nature Leech", bloodmagic, "bloodmagic.natureleech.body");
+	    addPage("Ritual of Culling", bloodmagic, "bloodmagic.culling.body");
+	    
 	    
 	    addPage("Disabled Items & Blocks", draconicevolution, "draconicevolution.disabled.body");
 	    addPage("Recipe Changes", draconicevolution, "draconicevolution.recipechanges.body");
@@ -70,15 +73,26 @@ public class BBTweaksGuide {
 	    addPage("Quarry", buildcraft, "buildcraft.quarry.body");
 
 	    addPage("Ender Quarry", extrautilities, "extrautilities.enderquarry.body");
-	    addPage("The Legendary Kikoku", extrautilities, "extrautilities.enderquarry.body");
+	    addPage("The Legendary Kikoku", extrautilities, "extrautilities.kikoku.body");
 
 	    addPage("Overworld", oregen, "oregen.overworld.body");
-	    addPage("Nether", oregen, "oregen.overworld.body");
-	    addPage("End", oregen, "oregen.overworld.body");
-	    addPage("InterGalactic", oregen, "oregen.overworld.body");
+	    addPage("Nether", oregen, "oregen.nether.body");
+	    addPage("End", oregen, "oregen.end.body");
+	    addPage("InterGalactic", oregen, "oregen.intergalactic.body");
+	    
+	    addPage("/bb", commands, "commands.bb.body");
+	    addPage("/nab", commands, "commands.nab.body");
+	    addPage("/saylocation", commands, "commands.saylocation.body");
+	    
+	    
+	    addPage("IndustrialCraft", other, "other.industrialcraft.body");
+	    addPage("Immersive Engineering", other, "other.immersiveengineering.body");
+	    addPage("Tinker's Construct", other, "other.tinkersconstruct.body");
+	    addPage("Big Reactors", other, "other.bigreactors.body");
 	    
 	    ArrayList<CategoryAbstract> categories = new ArrayList<CategoryAbstract>();
-        categories.add(new CategoryItemStack(botania, "Botania", new ItemStack(Items.flower_pot)));
+        categories.add(new CategoryItemStack(commands, "Commands", new ItemStack(Items.book)));
+	    categories.add(new CategoryItemStack(botania, "Botania", new ItemStack(Items.flower_pot)));
         categories.add(new CategoryItemStack(mekanism, "Mekanism", new ItemStack(Items.iron_ingot)));
         categories.add(new CategoryItemStack(bloodmagic, "Blood Magic", new ItemStack(Items.spider_eye)));
         categories.add(new CategoryItemStack(draconicevolution, "Draconic Evolution", new ItemStack(Items.ender_eye)));
@@ -86,7 +100,8 @@ public class BBTweaksGuide {
         categories.add(new CategoryItemStack(buildcraft, "Buildcraft", new ItemStack(Items.hopper_minecart)));
         categories.add(new CategoryItemStack(extrautilities, "Extrautilities", new ItemStack(Items.glowstone_dust)));
         categories.add(new CategoryItemStack(oregen, "Oregen", new ItemStack(Items.stone_pickaxe)));
-
+        categories.add(new CategoryItemStack(other, "Other", new ItemStack(Items.quartz)));
+        
 	    BookBuilder builder = new BookBuilder();
 	    builder.setCategories(categories);
 	    builder.setUnlocBookTitle("book.bbtweaks.title");
