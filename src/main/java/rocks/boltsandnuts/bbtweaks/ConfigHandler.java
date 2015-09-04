@@ -5,6 +5,7 @@ package rocks.boltsandnuts.bbtweaks;
  */
 
 import net.minecraftforge.common.config.Configuration;
+import rocks.boltsandnuts.bbtweaks.command.CommandBB;
 
 import java.io.File;
 
@@ -28,7 +29,7 @@ public class ConfigHandler {
     public static void syncConfig() {
         config.addCustomCategoryComment(exampleSection, "Reserved for Future use");
 //        config.addCustomCategoryComment(generation, "This section contains all settings regarding ore generation.");
-
+        CommandBB.cooldown = config.get(exampleSection, "BreakbitCooldown",1000*60*60*24).getInt();
         exampleOption = config.get(exampleSection, "notReallyAnOption", true, "if you choose not to decide, you still have made a choice.").getBoolean(exampleOption);
         config.save();
     }
