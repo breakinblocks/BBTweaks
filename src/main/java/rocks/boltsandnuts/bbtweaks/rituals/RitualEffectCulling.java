@@ -14,6 +14,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import WayofTime.alchemicalWizardry.AlchemicalWizardry;
+import WayofTime.alchemicalWizardry.api.alchemy.energy.ReagentRegistry;
 import WayofTime.alchemicalWizardry.api.rituals.IMasterRitualStone;
 import WayofTime.alchemicalWizardry.api.rituals.RitualComponent;
 import WayofTime.alchemicalWizardry.api.rituals.RitualEffect;
@@ -25,7 +26,8 @@ public class RitualEffectCulling extends RitualEffect {
 	DamageSource culled = new DamageSource("bbtweaks.absolute")
 	.setDamageAllowedInCreativeMode().setDamageBypassesArmor()
 	.setDamageIsAbsolute();
-
+	
+	public int reagentDrain = 2;
 	public static final int timeDelay = 20;
 	public static final int amount = 200;
 
@@ -106,8 +108,9 @@ public class RitualEffectCulling extends RitualEffect {
 				PotionEffect effect = livingEntity
 						.getActivePotionEffect(Potion.damageBoost); // Cursed earth boosted
 
-				if (effect == null) {
-					int p = 0;
+				if (this.canDrainReagent(ritualStone,
+						ReagentRegistry.magicalesReagent, reagentDrain, true) || effect == null) { // needs to be able to consume up to 5 blocks per try
+							int p = 0;
 					for (p = 0; p < 6; p++)
 						SpellHelper.sendParticleToAllAround(world, ex, ey, ez,
 								30, world.provider.dimensionId, "lava", ex
