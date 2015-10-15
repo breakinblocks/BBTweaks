@@ -20,6 +20,7 @@ public class ItemRegistry {
     public static Item breakbit_invar;
     public static Item breakbit_electrum;
     public static Item breakbit_enderium;
+	public static Item tarBall;
     
     public static void registerItems() {
         meldingManuscript = new ItemMeldingManuscript();
@@ -43,6 +44,9 @@ public class ItemRegistry {
         GameRegistry.registerItem(breakbit_electrum, "ItemBreakBitElectrum");
         breakbit_enderium = new ItemBreakBitEnderium();
         GameRegistry.registerItem(breakbit_enderium, "ItemBreakBitEnderium");
+		
+		tarBall= new ItemTarBall();
+		GameRegistry.registerItem(tarBall, "ItemTarBall");
     }
     
     
