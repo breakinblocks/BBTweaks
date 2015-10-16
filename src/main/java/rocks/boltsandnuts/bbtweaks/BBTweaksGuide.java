@@ -35,7 +35,7 @@ public class BBTweaksGuide {
 	    List<EntryAbstract> botania = new ArrayList<EntryAbstract>();
 	    List<EntryAbstract> mekanism   = new ArrayList<EntryAbstract>();
 	    List<EntryAbstract> bloodmagic  = new ArrayList<EntryAbstract>();
-	    List<EntryAbstract> draconicevolution  = new ArrayList<EntryAbstract>();
+	    List<EntryAbstract> agricraft  = new ArrayList<EntryAbstract>();
 	    List<EntryAbstract> rftools  = new ArrayList<EntryAbstract>();
 	    List<EntryAbstract> buildcraft  = new ArrayList<EntryAbstract>();
 	    List<EntryAbstract> extrautilities  = new ArrayList<EntryAbstract>();
@@ -63,8 +63,7 @@ public class BBTweaksGuide {
 	    addPage("Ritual of Culling", bloodmagic, "bloodmagic.culling.body");
 	    
 	    
-	    addPage("Disabled Items & Blocks", draconicevolution, "draconicevolution.disabled.body");
-	    addPage("Recipe Changes", draconicevolution, "draconicevolution.recipechanges.body");
+	     addPage("Crop changes", agricraft, "agricraft.cropchanges.body");
 	    
 	    addPage("Disabled Items & Blocks", rftools, "rftools.disabled.body");
 	    addPage("Blacklisted Dimlets", rftools, "rftools.dimlets.body");
@@ -95,7 +94,7 @@ public class BBTweaksGuide {
 	    categories.add(new CategoryItemStack(botania, "Botania", new ItemStack(Items.flower_pot)));
         categories.add(new CategoryItemStack(mekanism, "Mekanism", new ItemStack(Items.iron_ingot)));
         categories.add(new CategoryItemStack(bloodmagic, "Blood Magic", new ItemStack(Items.spider_eye)));
-        categories.add(new CategoryItemStack(draconicevolution, "Draconic Evolution", new ItemStack(Items.ender_eye)));
+        categories.add(new CategoryItemStack(agricraft, "Agricraft", new ItemStack(Items.ender_eye)));
         categories.add(new CategoryItemStack(rftools, "RF Tools", new ItemStack(Items.shears)));
         categories.add(new CategoryItemStack(buildcraft, "Buildcraft", new ItemStack(Items.hopper_minecart)));
         categories.add(new CategoryItemStack(extrautilities, "Extrautilities", new ItemStack(Items.glowstone_dust)));
