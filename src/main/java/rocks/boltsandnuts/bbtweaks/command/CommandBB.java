@@ -44,7 +44,16 @@ public class CommandBB extends CommandBase {
 			return;
 		}
 
-		ItemStack BB = new ItemStack(ItemRegistry.breakbit_invar);
+		double diff =  0;
+		int amount = 0 ;
+		
+		diff = 1 +  Math.floor(((time - timeNoSee)/cooldown));
+		
+		amount = (int)diff;
+		if (amount > 64)
+				amount = 64;
+		
+		ItemStack BB = new ItemStack(ItemRegistry.breakbit_invar, amount, 0);
 
 		if (!player.inventory.addItemStackToInventory(BB)) {
 			player.addChatMessage(new ChatComponentTranslation(
