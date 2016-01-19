@@ -21,7 +21,6 @@ import rocks.boltsandnuts.bbtweaks.blocks.BlockRegistry;
 import rocks.boltsandnuts.bbtweaks.client.gui.CreativeTabBaseMod;
 import rocks.boltsandnuts.bbtweaks.client.gui.GuiHandler;
 import rocks.boltsandnuts.bbtweaks.command.CommandBB;
-import rocks.boltsandnuts.bbtweaks.command.CommandNab;
 import rocks.boltsandnuts.bbtweaks.command.CommandSayLocation;
 import rocks.boltsandnuts.bbtweaks.items.ItemRecipeRegistry;
 import rocks.boltsandnuts.bbtweaks.items.ItemRegistry;
@@ -75,9 +74,8 @@ public class BBTweaks {
 
         ItemRecipeRegistry.registerItemRecipes();
         BlockRecipeRegistry.registerBlockRecipes();
-        BBTweaksGuide.buildGuide(); //Register GuideBook
+        
         if (isDevEnv)
-        	
         Rituals.registerRitual("ritualDev", 1, 1, new RitualEffectDev(), StatCollector.translateToLocal("ritual.bbtweaks.dev"));
         Rituals.registerRitual("ritualLeech", 1, 15000, new RitualEffectNatureLeech(), StatCollector.translateToLocal("ritual.bbtweaks.leech"), new AlchemyCircleRenderer(new ResourceLocation("alchemicalwizardry:textures/models/SimpleTransCircle.png"), 0, 0, 0, 255, 0, 0.501, 0.501, 0, 1.5, false));
         Rituals.registerRitual("ritualCulling", 1, 50000, new RitualEffectCulling(), StatCollector.translateToLocal("ritual.bbtweaks.culling"), new AlchemyCircleRenderer(new ResourceLocation("alchemicalwizardry:textures/models/SimpleTransCircle.png"), 0, 0, 0, 255, 0, 0.501, 0.501, 0, 1.5, false));
@@ -93,7 +91,7 @@ public class BBTweaks {
 	@Mod.EventHandler
 	public void onFMLServerStart(FMLServerStartingEvent event)
 	{
-		event.registerServerCommand(new CommandNab());
+		
 		event.registerServerCommand(new CommandSayLocation());
 		event.registerServerCommand(new CommandBB());
 	
