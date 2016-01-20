@@ -14,6 +14,8 @@ item.bbtweaks.inertcore.name=Inert Gaia Core
 item.bbtweaks.awakenedcore.name=Awakened Gaia Core
 item.bbtweaks.purifiedwill.name=Purified Will
 item.bbtweaks.tarBall.name=Tar Ball
+item.bbtweaks.fragileActivator=Fragile Activiation Crystal
+
 
 #TOOLTIPS
 #info.bbtweaks.tooltip.fire=This book will set you on fire.

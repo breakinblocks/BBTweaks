@@ -24,7 +24,7 @@ import WayofTime.alchemicalWizardry.common.tileEntity.TEAltar;
 
 public class RitualEffectNatureLeech extends RitualEffect {
 	public int reagentDrain = 2;
-	public static final int timeDelay = 80;
+	public static final int timeDelay = 40;
 
 	@Override
 	public int getCostPerRefresh() {
@@ -69,7 +69,7 @@ public class RitualEffectNatureLeech extends RitualEffect {
 		int x = ritualStone.getXCoord();
 		int y = ritualStone.getYCoord();
 		int z = ritualStone.getZCoord();
-		int radius = 3;
+		int radius = 2;
 		int currentEssence = SoulNetworkHandler.getCurrentEssence(owner);
 		TEAltar tileAltar = new TEAltar();
 
@@ -87,8 +87,7 @@ public class RitualEffectNatureLeech extends RitualEffect {
 		} else {
 			if (this.canDrainReagent(ritualStone,
 					ReagentRegistry.terraeReagent, reagentDrain * 5, false)) { // needs to be able to consume up to 5 blocks per try
-
-				radius = 5;
+				radius = 3;
 			}
 			int eaten = 0;
 			int max = 100;
@@ -118,7 +117,7 @@ public class RitualEffectNatureLeech extends RitualEffect {
 							
 						world.setBlockToAir(pos[0], pos[1], pos[2]);
 						eaten++;
-						if (radius == 5)
+						if (radius == 3)
 							this.canDrainReagent(ritualStone,
 									ReagentRegistry.terraeReagent,
 									reagentDrain, true);
@@ -142,7 +141,7 @@ public class RitualEffectNatureLeech extends RitualEffect {
 						}
 						else
 						{
-									tileAltar.sacrificialDaggerCall(eaten*15, true);
+									tileAltar.sacrificialDaggerCall(eaten*8, true);
 						} 
 					
 
