@@ -51,7 +51,7 @@ public class CommandBB extends CommandBase {
 		
 		amount = (int)diff;
 		if (amount > 32){
-				amount = 0; //They've gone inactive
+				amount = 1; //They've gone inactive or this is their first one
 				data.setLong("lastBB", time);
 		}
 		
