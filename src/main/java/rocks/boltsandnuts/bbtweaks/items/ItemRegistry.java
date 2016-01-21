@@ -21,6 +21,7 @@ public class ItemRegistry {
     public static Item breakbit_electrum;
     public static Item breakbit_enderium;
 	public static Item tarBall;
+    public static Item fragileActivator;
     
     public static void registerItems() {
         meldingManuscript = new ItemMeldingManuscript();
@@ -35,7 +36,9 @@ public class ItemRegistry {
         purifiedWill = new ItemPurifiedWill();
         GameRegistry.registerItem(purifiedWill, "ItemPurifiedWill");
 
-       
+       fragileActivator = new ItemfragileActivator();
+       GameRegistry.registerItem(fragileActivator, "ItemfragileActivator");
+        
         breakbit_worldbreaker = new ItemBreakBitWorldBreaker();
         GameRegistry.registerItem(breakbit_worldbreaker, "ItemBreakBitWorldBreaker");
         breakbit_invar = new ItemBreakBitInvar();
