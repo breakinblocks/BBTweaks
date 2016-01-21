@@ -50,8 +50,10 @@ public class CommandBB extends CommandBase {
 		diff = 1 +  Math.floor(((time - timeNoSee)/cooldown));
 		
 		amount = (int)diff;
-		if (amount > 64)
-				amount = 64;
+		if (amount > 32){
+				amount = 0; //They've gone inactive
+				data.setLong("lastBB", time);
+		}
 		
 		ItemStack BB = new ItemStack(ItemRegistry.breakbit_invar, amount, 0);
 
