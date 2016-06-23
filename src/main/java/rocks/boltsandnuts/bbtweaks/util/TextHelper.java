@@ -47,4 +47,19 @@ public class TextHelper {
     public static String localize(String key) {
         return StatCollector.translateToLocal(key);
     }
+    
+    /**
+     * Format the time into a friendly format
+     * @param range in miliseconds
+     * @return formatted string
+     */
+    public static String formatTimeFriendly(long range)
+    {
+		long hours = range / 1000 / 60 / 60;
+		long minutes = range / 1000 / 60 % 60;
+		long seconds = range / 1000 % 60;
+		return String.format(localize("general.bbtweaks.time_friendly"),
+				hours, minutes, seconds);
+    }
+    
 }
