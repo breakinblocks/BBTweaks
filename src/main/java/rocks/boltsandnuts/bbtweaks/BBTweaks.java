@@ -78,7 +78,7 @@ public class BBTweaks {
         if (isDevEnv)
         Rituals.registerRitual("ritualDev", 1, 1, new RitualEffectDev(), StatCollector.translateToLocal("ritual.bbtweaks.dev"));
         Rituals.registerRitual("ritualLeech", 1, 15000, new RitualEffectNatureLeech(), StatCollector.translateToLocal("ritual.bbtweaks.leech"), new AlchemyCircleRenderer(new ResourceLocation("alchemicalwizardry:textures/models/SimpleTransCircle.png"), 0, 0, 0, 255, 0, 0.501, 0.501, 0, 1.5, false));
-        Rituals.registerRitual("ritualCulling", 1, 50000, new RitualEffectCulling(), StatCollector.translateToLocal("ritual.bbtweaks.culling"), new AlchemyCircleRenderer(new ResourceLocation("alchemicalwizardry:textures/models/SimpleTransCircle.png"), 0, 0, 0, 255, 0, 0.501, 0.501, 0, 1.5, false));
+        Rituals.registerRitual("ritualCulling", 2, 50000, new RitualEffectCulling(), StatCollector.translateToLocal("ritual.bbtweaks.culling"), new AlchemyCircleRenderer(new ResourceLocation("alchemicalwizardry:textures/models/SimpleTransCircle.png"), 0, 0, 0, 255, 0, 0.501, 0.501, 0, 1.5, false));
     }
 
     @Mod.EventHandler
