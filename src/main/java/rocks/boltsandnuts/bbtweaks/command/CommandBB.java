@@ -29,10 +29,16 @@ public class CommandBB extends CommandBase {
 		return;
 	}
 
-	public static void giveBreakBit(ICommandSender command) {
-		EntityPlayer player = command.getEntityWorld().getPlayerEntityByName(
-				command.getCommandSenderName());
-		NBTTagCompound data = player.getEntityData();
+	public static void giveBreakBit(ICommandSender sender) {
+		if(!(sender instanceof EntityPlayer))
+		{
+			sender.addChatMessage(new ChatComponentTranslation(
+					"You must be a player to use this command."));
+			return;
+		}
+		
+		EntityPlayer player = (EntityPlayer) sender;
+		NBTTagCompound data = player.getEntityData().getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
 		long timeNoSee = data.getLong("lastBB");
 		long time = System.currentTimeMillis();
 		if (time - timeNoSee < cooldown) {
