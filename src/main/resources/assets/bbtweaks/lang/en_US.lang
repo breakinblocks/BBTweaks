@@ -1,8 +1,19 @@
+#GENERAL
+general.bbtweaks.time_friendly=%d hours, %d minutes, %d seconds
+
 #CREATIVE TAB
 itemGroup.bbtweaks.creativeTab=Breakin Blocks Tweaks
 
 #CONFIG GUI
 gui.bbtweaks.config.title=bbtweaks Configuration
+
+#COMMANDS
+command.bbtweaks.not_a_player=You must be a player to use this command.
+command.bbtweaks.not_enough_inventory_space=Not enough inventory Space.
+
+command.bbtweaks.bb.try_again=Try again in %s.
+command.bbtweaks.bb.not_eligible=You aren't eligible for another Breakbit yet.
+command.bbtweaks.bb.granted=Granted your Daily Invar BreakBit!
 
 #BLOCKS
 #tile.bbtweaks.quisque.lapis.block.name=Lapis Quisque Block

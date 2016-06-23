@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentTranslation;
 import rocks.boltsandnuts.bbtweaks.items.ItemRegistry;
+import rocks.boltsandnuts.bbtweaks.util.TextHelper;
 
 public class CommandBB extends CommandBase {
 
@@ -30,10 +31,9 @@ public class CommandBB extends CommandBase {
 	}
 
 	public static void giveBreakBit(ICommandSender sender) {
-		if(!(sender instanceof EntityPlayer))
-		{
+		if(!(sender instanceof EntityPlayer)) {
 			sender.addChatMessage(new ChatComponentTranslation(
-					"You must be a player to use this command."));
+					TextHelper.localize("command.bbtweaks.not_a_player")));
 			return;
 		}
 		
@@ -42,10 +42,13 @@ public class CommandBB extends CommandBase {
 		long timeNoSee = data.getLong("lastBB");
 		long time = System.currentTimeMillis();
 		if (time - timeNoSee < cooldown) {
+			long range = cooldown - (time - timeNoSee);
 			String out;
-			out = "Try again in " + gimme(cooldown - (time - timeNoSee));
+			out = String.format(
+					TextHelper.localize("command.bbtweaks.bb.try_again"),
+					TextHelper.formatTimeFriendly(range));
 			player.addChatMessage(new ChatComponentTranslation(
-					"You aren't eligible for another Breakbit yet."));
+					TextHelper.localize("command.bbtweaks.bb.not_eligible")));
 			player.addChatMessage(new ChatComponentTranslation(out));
 			return;
 		}
@@ -65,20 +68,12 @@ public class CommandBB extends CommandBase {
 
 		if (!player.inventory.addItemStackToInventory(BB)) {
 			player.addChatMessage(new ChatComponentTranslation(
-					"Not enough inventory Space."));
+					TextHelper.localize("command.bbtweaks.not_enough_inventory_space")));
 		} else {
 			player.addChatMessage(new ChatComponentTranslation(
-					"Granted your Daily Invar BreakBit!"));
+					TextHelper.localize("command.bbtweaks.bb.granted")));
 			data.setLong("lastBB", time);
 		}
 		return;
-	}
-
-	private static String gimme(long time) {
-		long hours = time / 1000 / 60 / 60;
-		long minutes = time / 1000 / 60 % 60;
-		long seconds = time / 1000 % 60;
-		return String.format("%d hours, %d minutes, %d seconds.", hours,
-				minutes, seconds);
 	}
 }
