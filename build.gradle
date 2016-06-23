@@ -69,10 +69,10 @@ repositories {
 }
 
 dependencies {
-    compile "mcp.mobius.waila:Waila:1.5.5_1.7.10"
-	compile "codechicken:CodeChickenLib:1.7.10-1.1.1.104:dev"
-	compile "codechicken:CodeChickenCore:1.7.10-1.0.3.26:dev"
-    compile "codechicken:NotEnoughItems:1.7.10-1.0.3.64:dev"
+    compile "mcp.mobius.waila:Waila:1.5.10_1.7.10"
+	compile "codechicken:CodeChickenLib:1.7.10-1.1.3.140:dev"
+	compile "codechicken:CodeChickenCore:1.7.10-1.0.7.47:dev"
+    compile "codechicken:NotEnoughItems:1.7.10-1.0.5.120:dev"
     compile name: "Thaumcraft", version: "1.7.10-4.2.3.5", ext: "jar"
     compile name: "Baubles", version: "1.0.1.10", ext: "jar"
     compile fileTree(dir: 'libs', include: '*.jar')
