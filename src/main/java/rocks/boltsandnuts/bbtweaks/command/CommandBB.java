@@ -12,6 +12,8 @@ import rocks.boltsandnuts.bbtweaks.util.TextHelper;
 public class CommandBB extends CommandBase {
 
 	public static int cooldown = 1000 * 60 * 60 * 24;
+	public static int maxBreakbits = 32;
+	public static String TAG_LAST_BB = "lastBB";
 
 	@Override
 	public String getCommandName() {
@@ -31,7 +33,7 @@ public class CommandBB extends CommandBase {
 	}
 
 	public static void giveBreakBit(ICommandSender sender) {
-		if(!(sender instanceof EntityPlayer)) {
+		if (!(sender instanceof EntityPlayer)) {
 			sender.addChatMessage(new ChatComponentTranslation(
 					TextHelper.localize("command.bbtweaks.not_a_player")));
 			return;
@@ -39,9 +41,11 @@ public class CommandBB extends CommandBase {
 		
 		EntityPlayer player = (EntityPlayer) sender;
 		NBTTagCompound data = player.getEntityData().getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
-		long timeNoSee = data.getLong("lastBB");
+		long timeNoSee = data.getLong(TAG_LAST_BB);
 		long time = System.currentTimeMillis();
-		if (time - timeNoSee < cooldown) {
+		int amount = (int) ((time - timeNoSee) / cooldown);
+
+		if (amount <= 0) {
 			long range = cooldown - (time - timeNoSee);
 			String out;
 			out = String.format(
@@ -53,15 +57,11 @@ public class CommandBB extends CommandBase {
 			return;
 		}
 
-		double diff =  0;
-		int amount = 0 ;
-		
-		diff = 1 +  Math.floor(((time - timeNoSee)/cooldown));
-		
-		amount = (int)diff;
-		if (amount > 32){
-				amount = 1; //They've gone inactive or this is their first one
-				data.setLong("lastBB", time);
+		if (amount > maxBreakbits) {
+			amount = 1; // They've gone inactive or this is their first one
+		} else {
+			// Move forward scaled by the amount given
+			time = timeNoSee + amount * cooldown;
 		}
 		
 		ItemStack BB = new ItemStack(ItemRegistry.breakbit_invar, amount, 0);
@@ -72,7 +72,7 @@ public class CommandBB extends CommandBase {
 		} else {
 			player.addChatMessage(new ChatComponentTranslation(
 					TextHelper.localize("command.bbtweaks.bb.granted")));
-			data.setLong("lastBB", time);
+			data.setLong(TAG_LAST_BB, time);
 		}
 		return;
 	}
