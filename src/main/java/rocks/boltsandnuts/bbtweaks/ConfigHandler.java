@@ -30,6 +30,7 @@ public class ConfigHandler {
         config.addCustomCategoryComment(exampleSection, "Reserved for Future use");
 //        config.addCustomCategoryComment(generation, "This section contains all settings regarding ore generation.");
         CommandBB.cooldown = config.get(exampleSection, "BreakbitCooldown",1000*60*60*24).getInt();
+        CommandBB.maxBreakbits = config.get(exampleSection, "BreakbitMaximum", 32, "[1,64] Threshold for breakbit reset.").getInt();
         exampleOption = config.get(exampleSection, "notReallyAnOption", true, "if you choose not to decide, you still have made a choice.").getBoolean(exampleOption);
         config.save();
     }
