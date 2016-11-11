@@ -1,81 +1,62 @@
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
         maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
-		classpath 'org.ajoberstar:gradle-git:0.10.1'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
     }
 }
-
-apply plugin: 'forge'
+apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
 
-ext.configFile = file "build.properties"
-configFile.withReader {
-    def prop = new Properties()
-    prop.load(it)
-    project.ext.config = new ConfigSlurper().parse prop
+version = "${getDate()}"
+group= "rocks.boltsandnuts" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "bbtweaks"
+
+
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyy-MM-dd')
+    return formattedDate
 }
 
-version = config.mc_version + "-" + config.mod_version + "-" + config.build_number
-group= config.package_group
-archivesBaseName = config.mod_name
 
-import org.ajoberstar.grgit.Grgit
-
-def gitHash = 'unknown'
-if (new File(projectDir, '.git').exists()) {
-    def repo = Grgit.open(project.file('.'))
-    gitHash = repo.log().find().abbreviatedId
+sourceCompatibility = targetCompatibility = "1.8" // Need this here so eclipse task generates correctly.
+compileJava {
+    sourceCompatibility = targetCompatibility = "1.8"
 }
 
 minecraft {
-    version = config.mc_version + "-" + config.forge_version
+    version = "1.10.2-12.18.1.2088"
     runDir = "run"
 
-    if (project.hasProperty('mappings_version'))
-        mappings = project.mappings_version
+    replace "@VERSION@", project.version
+    replaceIn "BBTweaks.java"
+
+
+    clientRunArgs += "--username=BBTweaksDev"
+    mappings = "snapshot_20160518"
 }
 
 
 repositories {
-    maven { // WAILA
-        name "Mobius Repo"
-        url "http://mobiusstrip.eu/maven"
-    }
-    maven { // CCC/NEI (for WAILA)
-        name "Chicken Bones Repo"
-        url "http://chickenbones.net/maven/"
-    }
-    ivy {
-        name "Thaumcraft"
-        artifactPattern "http://addons-origin.cursecdn.com/files/2227/552/[module]-[revision].[ext]"
-    }
-    ivy {
-        name "Baubles"
-        artifactPattern "https://dl.dropboxusercontent.com/u/47135879/[module]-deobf-1.7.10-[revision].[ext]"
-    }
+    maven { url "http://dvs1.progwml6.com/files/maven" }
+    maven {	url "http://mobiusstrip.eu/maven" }
+    maven {	url "http://tehnut.info/maven" }
 }
 
 dependencies {
-    compile "mcp.mobius.waila:Waila:1.5.10_1.7.10"
-	compile "codechicken:CodeChickenLib:1.7.10-1.1.3.140:dev"
-	compile "codechicken:CodeChickenCore:1.7.10-1.0.7.47:dev"
-    compile "codechicken:NotEnoughItems:1.7.10-1.0.5.120:dev"
-    compile name: "Thaumcraft", version: "1.7.10-4.2.3.5", ext: "jar"
-    compile name: "Baubles", version: "1.0.1.10", ext: "jar"
-    compile fileTree(dir: 'libs', include: '*.jar')
+    deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
+    deobfCompile "info.amerifrance.guideapi:Guide-API:${mc_version}-${guideapi_version}"
+    deobfCompile "info.tehnut.buttons:Buttons:${buttons_version}:api"
+	
 }
 
 processResources {
@@ -83,65 +64,14 @@ processResources {
     inputs.property "mcversion", project.minecraft.version
 
     from(sourceSets.main.resources.srcDirs) {
-        include '**/*.info'
-        include '**/*.properties'
-
-        expand 'version': project.version, 'mcversion': project.minecraft.version
+        include 'mcmod.info'
+                
+        expand 'version':project.version, 'mcversion':project.minecraft.version
     }
+        
     from(sourceSets.main.resources.srcDirs) {
-        exclude '**/*.info'
-        exclude '**/*.properties'
-        exclude '**/*.db'
+        exclude 'mcmod.info'
     }
-}
-
-jar {
-    dependsOn "incrementBuildNumber"
-    classifier = 'universal'
-    manifest.mainAttributes(
-        "Built-By": System.getProperty('user.name'),
-        "Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
-        "Implementation-Title": project.name,
-        "Implementation-Version": project.version,
-        "Git-Hash": gitHash
-    )
-}
-
-// add a source jar
-task sourceJar(type: Jar) {
-    from sourceSets.main.allSource
-    classifier = 'sources'
-}
-
-// add a javadoc jar
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    from javadoc.destinationDir
-    classifier = 'javadoc'
-}
-
-// because the normal output has been made to be obfuscated
-task deobfJar(type: Jar) {
-    from sourceSets.main.output
-    classifier = 'deobf'
-}
-
-tasks.build.dependsOn sourceJar, javadocJar, deobfJar
-
-tasks.withType(JavaCompile) { task ->
-    task.options.encoding = 'UTF-8'
-}
-
-task("incrementBuildNumber") {
-	// increment build number
-	doFirst {
-		// increment
-		config.build_number = (config.build_number.toString().toInteger()) + 1
-
-		// write back to the file
-		configFile.withWriter {
-			config.toProperties().store(it, "")
-		}
-	}
 }
 
 idea { module { inheritOutputDirs = true } }
