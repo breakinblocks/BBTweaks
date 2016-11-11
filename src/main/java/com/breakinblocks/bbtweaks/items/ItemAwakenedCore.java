@@ -10,9 +10,8 @@
 package com.breakinblocks.bbtweaks.items;
 
 import java.awt.Color;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class ItemAwakenedCore extends ItemBase {
 	
@@ -22,7 +21,7 @@ public class ItemAwakenedCore extends ItemBase {
 	    setMaxStackSize(16);
 	}
 	
-	@SideOnly(Side.CLIENT)
+	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
 		return Color.HSBtoRGB((System.currentTimeMillis() / 10) % 360 / 360F, 0.25F, 1F);
 		

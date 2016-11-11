@@ -4,11 +4,13 @@ import com.breakinblocks.bbtweaks.items.ItemRegistry;
 import com.breakinblocks.bbtweaks.util.TextHelper;
 
 import net.minecraft.command.CommandBase;
+import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.text.TextComponentTranslation;
 
 public class CommandBB extends CommandBase {
 
@@ -27,16 +29,9 @@ public class CommandBB extends CommandBase {
 		return "/bb";
 	}
 
-	@Override
-	public void processCommand(ICommandSender command, String[] p_71515_2_) {
-		CommandBB.giveBreakBit(command);
-		return;
-	}
-
 	public static void giveBreakBit(ICommandSender sender) {
 		if (!(sender instanceof EntityPlayer)) {
-			sender.addChatMessage(new ChatComponentTranslation(
-					TextHelper.localize("command.bbtweaks.not_a_player")));
+			sender.addChatMessage(new TextComponentTranslation("command.bbtweaks.not_a_player"));
 			return;
 		}
 		
@@ -52,9 +47,9 @@ public class CommandBB extends CommandBase {
 			out = String.format(
 					TextHelper.localize("command.bbtweaks.bb.try_again"),
 					TextHelper.formatTimeFriendly(range));
-			player.addChatMessage(new ChatComponentTranslation(
+			player.addChatMessage(new TextComponentTranslation(
 					TextHelper.localize("command.bbtweaks.bb.not_eligible")));
-			player.addChatMessage(new ChatComponentTranslation(out));
+			player.addChatMessage(new TextComponentTranslation(out));
 			return;
 		}
 
@@ -68,13 +63,19 @@ public class CommandBB extends CommandBase {
 		ItemStack BB = new ItemStack(ItemRegistry.breakbit_invar, amount, 0);
 
 		if (!player.inventory.addItemStackToInventory(BB)) {
-			player.addChatMessage(new ChatComponentTranslation(
+			player.addChatMessage(new TextComponentTranslation(
 					TextHelper.localize("command.bbtweaks.not_enough_inventory_space")));
 		} else {
-			player.addChatMessage(new ChatComponentTranslation(
+			player.addChatMessage(new TextComponentTranslation(
 					TextHelper.localize("command.bbtweaks.bb.granted")));
 			data.setLong(TAG_LAST_BB, time);
 		}
 		return;
+	}
+
+	@Override
+	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+		CommandBB.giveBreakBit(sender);
+		
 	}
 }

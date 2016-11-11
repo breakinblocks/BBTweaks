@@ -2,7 +2,8 @@ package com.breakinblocks.bbtweaks.util;
 
 //General place to call text formatting from. You can alternatively use 'EnumChatFormatting'.
 
-import net.minecraft.util.StatCollector;
+
+import net.minecraft.util.text.translation.*;
 
 public class TextHelper {
 
@@ -44,8 +45,9 @@ public class TextHelper {
     /**
      * Enable Localizationizing *
      */
-    public static String localize(String key) {
-        return StatCollector.translateToLocal(key);
+    @SuppressWarnings("deprecation")
+	public static String localize(String key) {
+    	return I18n.translateToLocal(key);
     }
     
     /**

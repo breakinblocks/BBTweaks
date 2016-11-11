@@ -2,7 +2,7 @@ package com.breakinblocks.bbtweaks.blocks;
 
 //General place to register all your blocks.
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 
 @SuppressWarnings("unused")

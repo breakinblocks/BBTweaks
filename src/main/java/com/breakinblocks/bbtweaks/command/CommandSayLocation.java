@@ -1,12 +1,20 @@
 package com.breakinblocks.bbtweaks.command;
 
+import com.breakinblocks.bbtweaks.util.TextHelper;
+
 import net.minecraft.command.CommandBase;
+import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
 
+
+
+@SuppressWarnings("deprecation")
 public class CommandSayLocation extends CommandBase {
 
 	@Override
@@ -20,40 +28,47 @@ public class CommandSayLocation extends CommandBase {
 		return "/saylocation";
 	}
 
-	@SuppressWarnings("static-access")
+
 	@Override
-	public void processCommand(ICommandSender command, String[] myString) {
+	public void execute(MinecraftServer server, ICommandSender command, String[] args) throws CommandException {
 		String loc = new String();
 		String name = new String();
+		TextComponentTranslation message = null;
+		EntityPlayer player = null;
 		double x, y, z;
-		EntityPlayer player = command.getEntityWorld().getPlayerEntityByName(
-				command.getCommandSenderName());
-		name = player.getDisplayName();
+		
+		if (command.getCommandSenderEntity() instanceof EntityPlayer)
+			player = (EntityPlayer) command.getCommandSenderEntity();
+		else
+			return;
+		
+		name = player.getName();
 		
 		if (player != null) {
 			x = player.posX;
 			y = player.posY;
 			z = player.posZ;
-			loc = String.format(EnumChatFormatting.LIGHT_PURPLE
-					+ "%s is @" + EnumChatFormatting.GREEN + " ("
-					+ EnumChatFormatting.ITALIC.DARK_GREEN + "%.1f"
-					+ EnumChatFormatting.GREEN + ")" + EnumChatFormatting.GREEN
-					+ " (" + EnumChatFormatting.ITALIC.DARK_GREEN + "%.1f"
-					+ EnumChatFormatting.GREEN + ")" + EnumChatFormatting.GREEN
-					+ " (" + EnumChatFormatting.ITALIC.DARK_GREEN + "%.1f"
-					+ EnumChatFormatting.GREEN + ")"
-					+ EnumChatFormatting.LIGHT_PURPLE + " in: "
-					+ EnumChatFormatting.ITALIC.DARK_GREEN + "["
-					+ EnumChatFormatting.GREEN + "%s"
-					+ EnumChatFormatting.ITALIC.DARK_GREEN + "]", name, x, y, z,
-					command.getEntityWorld().provider.getDimensionName());
+			loc = String.format(TextFormatting.LIGHT_PURPLE
+					+ "%s is @" + TextFormatting.GREEN + " ("
+					+ TextFormatting.DARK_GREEN + "%.1f"
+					+ TextFormatting.GREEN + ")" + TextFormatting.GREEN
+					+ " (" + TextFormatting.DARK_GREEN + "%.1f"
+					+ TextFormatting.GREEN + ")" + TextFormatting.GREEN
+					+ " (" + TextFormatting.DARK_GREEN + "%.1f"
+					+ TextFormatting.GREEN + ")"
+					+ TextFormatting.LIGHT_PURPLE + " in: "
+					+ TextFormatting.DARK_GREEN + "["
+					+ TextFormatting.GREEN + "%s"
+					+ TextFormatting.DARK_GREEN + "]", name, x, y, z,
+					command.getEntityWorld().provider.getDimension());
 
-
-				MinecraftServer.getServer().getConfigurationManager()
-						.sendChatMsg(new ChatComponentText(loc));
-		
+			
+			message = new TextComponentTranslation(TextHelper.localize(loc));
+			for (int i = 0; i < player.worldObj.playerEntities.size(); i++)
+				player.worldObj.playerEntities.get(i).addChatMessage(message);
 		}
 		return;
+		
 	}
 
 }

@@ -6,7 +6,7 @@ import com.breakinblocks.bbtweaks.blocks.BlockRegistry;
  * General place to do all your item related recipe things'n'stuff.
  */
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;

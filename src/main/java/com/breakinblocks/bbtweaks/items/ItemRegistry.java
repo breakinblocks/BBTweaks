@@ -6,7 +6,7 @@ package com.breakinblocks.bbtweaks.items;
  * Keep that in mind if you like nicely organized creative tabs.
  */
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 
 public class ItemRegistry {
@@ -24,8 +24,7 @@ public class ItemRegistry {
     public static Item fragileActivator;
     
     public static void registerItems() {
-        meldingManuscript = new ItemMeldingManuscript();
-        GameRegistry.registerItem(meldingManuscript, "ItemMeldingManuscript");
+
 
         inertCore = new ItemInertCore();
         GameRegistry.registerItem(inertCore, "ItemInertCore");
@@ -35,10 +34,7 @@ public class ItemRegistry {
         
         purifiedWill = new ItemPurifiedWill();
         GameRegistry.registerItem(purifiedWill, "ItemPurifiedWill");
-
-       fragileActivator = new ItemfragileActivator();
-       GameRegistry.registerItem(fragileActivator, "ItemfragileActivator");
-        
+       
         breakbit_worldbreaker = new ItemBreakBitWorldBreaker();
         GameRegistry.registerItem(breakbit_worldbreaker, "ItemBreakBitWorldBreaker");
         breakbit_invar = new ItemBreakBitInvar();
