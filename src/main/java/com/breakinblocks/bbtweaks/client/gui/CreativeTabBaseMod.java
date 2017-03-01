@@ -1,7 +1,8 @@
 package com.breakinblocks.bbtweaks.client.gui;
 
 import com.breakinblocks.bbtweaks.ModInformation;
-import com.breakinblocks.bbtweaks.items.ItemRegistry;
+import com.breakinblocks.bbtweaks.common.registry.ModItems;
+
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -21,7 +22,7 @@ public class CreativeTabBaseMod extends CreativeTabs {
     //The tab icon is what you return here
     @Override
     public ItemStack getIconItemStack() {
-        return new ItemStack(ItemRegistry.inertCore);
+        return new ItemStack(ModItems.inertCore);
     }
 
     @Override

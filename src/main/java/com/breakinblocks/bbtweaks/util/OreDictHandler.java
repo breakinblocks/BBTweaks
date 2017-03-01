@@ -1,7 +1,7 @@
 package com.breakinblocks.bbtweaks.util;
 
 import com.breakinblocks.bbtweaks.blocks.BlockRegistry;
-import com.breakinblocks.bbtweaks.items.ItemRegistry;
+
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

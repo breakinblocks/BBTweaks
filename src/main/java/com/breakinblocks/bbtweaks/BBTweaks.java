@@ -28,7 +28,6 @@ import com.breakinblocks.bbtweaks.client.gui.GuiHandler;
 import com.breakinblocks.bbtweaks.command.CommandBB;
 import com.breakinblocks.bbtweaks.command.CommandSayLocation;
 import com.breakinblocks.bbtweaks.items.ItemRecipeRegistry;
-import com.breakinblocks.bbtweaks.items.ItemRegistry;
 import com.breakinblocks.bbtweaks.proxies.CommonProxy;
 import com.breakinblocks.bbtweaks.util.EventHandler;
 import com.breakinblocks.bbtweaks.util.OreDictHandler;
@@ -38,6 +37,8 @@ import com.breakinblocks.bbtweaks.util.TextHelper;
 @Mod(modid = ModInformation.ID, name = ModInformation.NAME, version = ModInformation.VERSION, dependencies = ModInformation.DEPEND, guiFactory = ModInformation.GUIFACTORY)
 public class BBTweaks {
 	 
+	public static final String MODID = "BBTweaks";
+
 	public static       boolean isDevEnv     = (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
 	 
     @SidedProxy(clientSide = ModInformation.CLIENTPROXY, serverSide = ModInformation.COMMONPROXY)
@@ -56,8 +57,6 @@ public class BBTweaks {
 
         ConfigHandler.init(event.getSuggestedConfigurationFile());
 
-        ItemRegistry.registerItems();
-        BlockRegistry.registerBlocks();
 
         OreDictHandler.registerOreDict();
         FMLCommonHandler.instance().bus().register(new EventHandler());

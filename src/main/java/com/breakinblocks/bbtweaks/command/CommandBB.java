@@ -1,6 +1,7 @@
 package com.breakinblocks.bbtweaks.command;
 
-import com.breakinblocks.bbtweaks.items.ItemRegistry;
+
+import com.breakinblocks.bbtweaks.common.registry.ModItems;
 import com.breakinblocks.bbtweaks.util.TextHelper;
 
 import net.minecraft.command.CommandBase;
@@ -50,7 +51,7 @@ public class CommandBB extends CommandBase {
 			time = timeNoSee + amount * cooldown;
 		}
 		
-		ItemStack BB = new ItemStack(ItemRegistry.breakbit_invar, amount, 0);
+		ItemStack BB = new ItemStack(ModItems.breakbit_invar, amount, 0);
 
 		if (!player.inventory.addItemStackToInventory(BB)) {
 			player.sendMessage(new TextComponentTranslation(

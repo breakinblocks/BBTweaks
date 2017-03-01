@@ -17,7 +17,7 @@ public class ItemAwakenedCore extends ItemBase {
 	
 	
 	public ItemAwakenedCore() {
-		super("awakenedcore", "inertCore");
+		super("awakenedcore", "inertcore");
 	    setMaxStackSize(16);
 	}
 	
