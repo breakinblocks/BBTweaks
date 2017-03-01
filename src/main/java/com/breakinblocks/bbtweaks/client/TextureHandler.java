@@ -11,12 +11,12 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 
 public class TextureHandler {
-	
+
 	public static ArrayList<Item> itemBuffer = new ArrayList<>();
 	public static ArrayList<Block> blockBuffer = new ArrayList<>();
 
 	public static void registerFluidRenderers() {
-		//For Later
+		// For Later
 	}
 
 	public static void registerItem(Item item, int meta, String name) {
@@ -25,17 +25,16 @@ public class TextureHandler {
 	}
 
 	public static void registerBlock(Block block, int meta, String name) {
-		registerItem(Item.getItemFromBlock(block),meta,name);
+		registerItem(Item.getItemFromBlock(block), meta, name);
 	}
 
 	public static void handle(Item item, String name) {
 		registerItem(item, 0, name);
-		//TODO: Handle variants
+		// TODO: Handle variants
 	}
 
 	public static void handle(Block block, String name) {
-		registerBlock(block,0,name);
+		registerBlock(block, 0, name);
 	}
-
 
 }

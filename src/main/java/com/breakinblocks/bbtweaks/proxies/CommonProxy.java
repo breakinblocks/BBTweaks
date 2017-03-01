@@ -10,19 +10,15 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class CommonProxy {
 
-	
-
 	public void preInit(FMLPreInitializationEvent event) {
 		BBTweaksSounds.init();
 		MinecraftForge.EVENT_BUS.register(new EventHandler());
-		//ModBlocks.init();
 		ModItems.init();
-		//ModPotions.init();
-		
+
 	}
 
 	public void init(FMLInitializationEvent event) {
-		
+
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {

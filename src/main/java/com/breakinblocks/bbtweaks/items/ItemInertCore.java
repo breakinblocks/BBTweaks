@@ -4,7 +4,7 @@ public class ItemInertCore extends ItemBase {
 
 	public ItemInertCore() {
 		super("inertcore", "inertcore");
-	    setMaxStackSize(16);
+		setMaxStackSize(16);
 	}
 
 }

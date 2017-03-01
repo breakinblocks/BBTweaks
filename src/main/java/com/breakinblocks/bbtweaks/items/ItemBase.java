@@ -19,31 +19,30 @@ import net.minecraft.item.ItemStack;
 @SuppressWarnings("unused")
 public class ItemBase extends Item {
 
+	protected String setColor = "";
+	protected String setInfo = "";
 
-    protected String setColor="";
-    protected String setInfo="";
+	// If you aren't setting multiple textures for your item. IE: Non-Metadata
+	// items.
+	public ItemBase(String unlocName, String textureName) {
+		super();
 
-    // If you aren't setting multiple textures for your item. IE: Non-Metadata items.
-    public ItemBase(String unlocName, String textureName) {
-        super();
+		setUnlocalizedName(ModInformation.ID + "." + unlocName);
+		setCreativeTab(BBTweaks.tabBaseMod);
 
-        setUnlocalizedName(ModInformation.ID + "." + unlocName);
-        setCreativeTab(BBTweaks.tabBaseMod);
-        
-    }
+	}
 
-    // If you are setting multiple textures for your item. IE: Metadata items.
-    public ItemBase(String unlocName) {
-        super();
+	// If you are setting multiple textures for your item. IE: Metadata items.
+	public ItemBase(String unlocName) {
+		super();
 
-        setUnlocalizedName(ModInformation.ID + "." + unlocName);
-        setCreativeTab(BBTweaks.tabBaseMod);
-    }
+		setUnlocalizedName(ModInformation.ID + "." + unlocName);
+		setCreativeTab(BBTweaks.tabBaseMod);
+	}
 
-    @SideOnly(Side.CLIENT)
-    protected String setToolTipData(ItemStack IStack){
-        return this.setColor + this.setInfo;
-    }
-    
+	@SideOnly(Side.CLIENT)
+	protected String setToolTipData(ItemStack IStack) {
+		return this.setColor + this.setInfo;
+	}
+
 }
-

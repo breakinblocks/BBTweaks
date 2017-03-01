@@ -3,7 +3,7 @@ package com.breakinblocks.bbtweaks.items;
 public class ItemBreakBitWorldBreaker extends ItemBase {
 
 	public ItemBreakBitWorldBreaker() {
-		super("breakbit_worldbreaker", "breakbit_worldbreaker");
-	    setMaxStackSize(64);
+		super("breakbitworldbreaker", "breakbitworldbreaker");
+		setMaxStackSize(64);
 	}
 }

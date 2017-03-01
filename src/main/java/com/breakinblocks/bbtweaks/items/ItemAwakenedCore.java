@@ -14,17 +14,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class ItemAwakenedCore extends ItemBase {
-	
-	
+
 	public ItemAwakenedCore() {
 		super("awakenedcore", "inertcore");
-	    setMaxStackSize(16);
+		setMaxStackSize(16);
 	}
-	
+
 	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
 		return Color.HSBtoRGB((System.currentTimeMillis() / 10) % 360 / 360F, 0.25F, 1F);
-		
+
 	}
-	
+
 }
