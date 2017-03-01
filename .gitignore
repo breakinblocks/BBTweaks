@@ -48,7 +48,6 @@ usernamecache.json
 gradle/wrapper/gradle-wrapper.jar
 .gradle/2.1/taskArtifacts/cache.properties
 gradle/wrapper/gradle-wrapper.properties
-*.properties
 .gradle/2.14/taskArtifacts/fileHashes.bin
 *.bin
 /.gradle/
