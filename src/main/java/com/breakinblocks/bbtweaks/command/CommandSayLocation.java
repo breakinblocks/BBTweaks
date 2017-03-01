@@ -7,26 +7,14 @@ import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 
 
 
-@SuppressWarnings("deprecation")
+
 public class CommandSayLocation extends CommandBase {
 
-	@Override
-	public String getCommandName() {
-		return "saylocation";
-
-	}
-
-	@Override
-	public String getCommandUsage(ICommandSender p_71518_1_) {
-		return "/saylocation";
-	}
 
 
 	@Override
@@ -64,11 +52,23 @@ public class CommandSayLocation extends CommandBase {
 
 			
 			message = new TextComponentTranslation(TextHelper.localize(loc));
-			for (int i = 0; i < player.worldObj.playerEntities.size(); i++)
-				player.worldObj.playerEntities.get(i).addChatMessage(message);
+			for (int i = 0; i < player.world.playerEntities.size(); i++)
+				player.world.playerEntities.get(i).sendMessage(message);
 		}
 		return;
 		
+	}
+
+	
+	
+	@Override
+	public String getName() {
+		return "saylocation";
+	}
+
+	@Override
+	public String getUsage(ICommandSender sender) {
+		return "/saylocation";
 	}
 
 }

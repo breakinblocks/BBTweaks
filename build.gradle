@@ -34,7 +34,7 @@ compileJava {
 }
 
 minecraft {
-    version = "1.10.2-12.18.1.2088"
+    version = "${mc_version}-${forge_version}"
     runDir = "run"
 
     replace "@VERSION@", project.version
@@ -42,7 +42,7 @@ minecraft {
 
 
     clientRunArgs += "--username=BBTweaksDev"
-    mappings = "snapshot_20160518"
+    mappings = "stable_29"
 }
 
 
@@ -54,8 +54,8 @@ repositories {
 
 dependencies {
     deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
-    deobfCompile "info.amerifrance.guideapi:Guide-API:${mc_version}-${guideapi_version}"
-    deobfCompile "info.tehnut.buttons:Buttons:${buttons_version}:api"
+	deobfCompile "info.amerifrance.guideapi:Guide-API:${mc_version}-${guideapi_version}"
+    
 	
 }
 

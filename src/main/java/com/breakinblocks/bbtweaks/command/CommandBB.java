@@ -18,20 +18,10 @@ public class CommandBB extends CommandBase {
 	public static int maxBreakbits = 32;
 	public static String TAG_LAST_BB = "lastBB";
 
-	@Override
-	public String getCommandName() {
-		return "bb";
-	}
-
-	@Override
-	public String getCommandUsage(ICommandSender p_71518_1_) {
-
-		return "/bb";
-	}
 
 	public static void giveBreakBit(ICommandSender sender) {
 		if (!(sender instanceof EntityPlayer)) {
-			sender.addChatMessage(new TextComponentTranslation("command.bbtweaks.not_a_player"));
+			sender.sendMessage(new TextComponentTranslation("command.bbtweaks.not_a_player"));
 			return;
 		}
 		
@@ -47,9 +37,9 @@ public class CommandBB extends CommandBase {
 			out = String.format(
 					TextHelper.localize("command.bbtweaks.bb.try_again"),
 					TextHelper.formatTimeFriendly(range));
-			player.addChatMessage(new TextComponentTranslation(
+			player.sendMessage(new TextComponentTranslation(
 					TextHelper.localize("command.bbtweaks.bb.not_eligible")));
-			player.addChatMessage(new TextComponentTranslation(out));
+			player.sendMessage(new TextComponentTranslation(out));
 			return;
 		}
 
@@ -63,10 +53,10 @@ public class CommandBB extends CommandBase {
 		ItemStack BB = new ItemStack(ItemRegistry.breakbit_invar, amount, 0);
 
 		if (!player.inventory.addItemStackToInventory(BB)) {
-			player.addChatMessage(new TextComponentTranslation(
+			player.sendMessage(new TextComponentTranslation(
 					TextHelper.localize("command.bbtweaks.not_enough_inventory_space")));
 		} else {
-			player.addChatMessage(new TextComponentTranslation(
+			player.sendMessage(new TextComponentTranslation(
 					TextHelper.localize("command.bbtweaks.bb.granted")));
 			data.setLong(TAG_LAST_BB, time);
 		}
@@ -77,5 +67,15 @@ public class CommandBB extends CommandBase {
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		CommandBB.giveBreakBit(sender);
 		
+	}
+	
+	@Override
+	public String getName() {
+		return "bb";
+	}
+
+	@Override
+	public String getUsage(ICommandSender sender) {
+		return "/bb";
 	}
 }
