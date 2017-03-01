@@ -20,9 +20,9 @@ public class ItemRecipeRegistry {
 
     // Self explanatory. Continue these how you wish. EG: registerSmeltingRecipes
     private static void registerShapedRecipes() {
-    	ItemStack invar = new ItemStack(ModItems.breakbit_invar,1);
-    	ItemStack electrum = new ItemStack(ModItems.breakbit_electrum,1);
-    	ItemStack enderium = new ItemStack(ModItems.breakbit_enderium,1);
+    	ItemStack invar = new ItemStack(ModItems.breakbitinvar,1);
+    	ItemStack electrum = new ItemStack(ModItems.breakbitelectrum,1);
+    	ItemStack enderium = new ItemStack(ModItems.breakbitenderium,1);
     	
     	GameRegistry.addRecipe(new ShapedOreRecipe(electrum, new Object[]{"XXX", "XXX", "XXX", 'X', invar}));
     	GameRegistry.addRecipe(new ShapedOreRecipe(enderium, new Object[]{"XXX", "XXX", "XXX", 'X', electrum}));
@@ -31,12 +31,12 @@ public class ItemRecipeRegistry {
     }
 
     private static void registerShapelessRecipes() {
-    	ItemStack invar = new ItemStack(ModItems.breakbit_invar,1);
-    	ItemStack electrum = new ItemStack(ModItems.breakbit_electrum,1);
-    	ItemStack enderium = new ItemStack(ModItems.breakbit_enderium,1);
-    	ItemStack breakers = new ItemStack(ModItems.breakbit_worldbreaker, 32);
-    	ItemStack invars = new ItemStack(ModItems.breakbit_invar, 9);
-    	ItemStack electrums = new ItemStack(ModItems.breakbit_electrum, 9);
+    	ItemStack invar = new ItemStack(ModItems.breakbitinvar,1);
+    	ItemStack electrum = new ItemStack(ModItems.breakbitelectrum,1);
+    	ItemStack enderium = new ItemStack(ModItems.breakbitenderium,1);
+    	ItemStack breakers = new ItemStack(ModItems.breakbitworldbreaker, 32);
+    	ItemStack invars = new ItemStack(ModItems.breakbitinvar, 9);
+    	ItemStack electrums = new ItemStack(ModItems.breakbitelectrum, 9);
     	
     	GameRegistry.addShapelessRecipe(breakers, invar );
         GameRegistry.addShapelessRecipe(invars, electrum);

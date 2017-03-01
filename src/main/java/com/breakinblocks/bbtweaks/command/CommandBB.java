@@ -51,7 +51,7 @@ public class CommandBB extends CommandBase {
 			time = timeNoSee + amount * cooldown;
 		}
 		
-		ItemStack BB = new ItemStack(ModItems.breakbit_invar, amount, 0);
+		ItemStack BB = new ItemStack(ModItems.breakbitinvar, amount, 0);
 
 		if (!player.inventory.addItemStackToInventory(BB)) {
 			player.sendMessage(new TextComponentTranslation(

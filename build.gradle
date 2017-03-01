@@ -54,8 +54,7 @@ repositories {
 
 dependencies {
     deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
-	deobfCompile "info.amerifrance.guideapi:Guide-API:${mc_version}-${guideapi_version}"
-    
+  
 	
 }
 

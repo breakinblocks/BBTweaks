@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 
 public class TextureHandler {
-	//public static final ResourceLocation fluidManaColourlessStill = new ResourceLocation(Nexus.MODID + ":blocks/fluid/manacolourless_still");
 	
 	public static ArrayList<Item> itemBuffer = new ArrayList<>();
 	public static ArrayList<Block> blockBuffer = new ArrayList<>();

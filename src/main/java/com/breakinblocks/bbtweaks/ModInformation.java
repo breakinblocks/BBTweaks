@@ -13,5 +13,5 @@ public class ModInformation {
     public static final String VERSION = "0.0.1";
     public static final String CLIENTPROXY = "com.breakinblocks.bbtweaks.proxies.ClientProxy";
     public static final String COMMONPROXY = "com.breakinblocks.bbtweaks.proxies.CommonProxy";
-    public static final String GUIFACTORY = "com.breakinblocks.bbtweaks.client.gui.ConfigGuiFactory";
+    
 }

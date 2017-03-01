@@ -23,8 +23,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.breakinblocks.bbtweaks.blocks.BlockRecipeRegistry;
 import com.breakinblocks.bbtweaks.blocks.BlockRegistry;
-import com.breakinblocks.bbtweaks.client.gui.CreativeTabBaseMod;
-import com.breakinblocks.bbtweaks.client.gui.GuiHandler;
+import com.breakinblocks.bbtweaks.common.CreativeTabBaseMod;
 import com.breakinblocks.bbtweaks.command.CommandBB;
 import com.breakinblocks.bbtweaks.command.CommandSayLocation;
 import com.breakinblocks.bbtweaks.items.ItemRecipeRegistry;
@@ -34,13 +33,19 @@ import com.breakinblocks.bbtweaks.util.OreDictHandler;
 import com.breakinblocks.bbtweaks.util.TextHelper;
 
 @SuppressWarnings("unused")
-@Mod(modid = ModInformation.ID, name = ModInformation.NAME, version = ModInformation.VERSION, dependencies = ModInformation.DEPEND, guiFactory = ModInformation.GUIFACTORY)
+@Mod(modid = ModInformation.ID, name = ModInformation.NAME, version = ModInformation.VERSION, dependencies = ModInformation.DEPEND)
 public class BBTweaks {
 	 
-	public static final String MODID = "BBTweaks";
-
+	public static final String MODID = "bbtweaks";
+    public static boolean played = false;
+	public static boolean playWorld = false;
 	public static       boolean isDevEnv     = (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
-	 
+	public static int playOn = 1;
+	public static String name = "bbtweaks:iwrench";
+	public static String nameWorld = "bbtweaks:iwrench";
+	public static double pitch = 1.0D;
+	public static double pitchWorld = 1.0D;
+
     @SidedProxy(clientSide = ModInformation.CLIENTPROXY, serverSide = ModInformation.COMMONPROXY)
     public static CommonProxy proxy;
 
@@ -50,24 +55,24 @@ public class BBTweaks {
     @Mod.Instance
     public static BBTweaks instance;
 
-    @SuppressWarnings("deprecation")
+    
+    
+	@SuppressWarnings("deprecation")
 	@Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        logger.info(TextHelper.localize("info." + ModInformation.ID + ".console.load.preInit"));
-
+		proxy.preInit(event);
+		logger.info(TextHelper.localize("info." + ModInformation.ID + ".console.load.preInit"));
         ConfigHandler.init(event.getSuggestedConfigurationFile());
-
-
         OreDictHandler.registerOreDict();
         FMLCommonHandler.instance().bus().register(new EventHandler());
-        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+        
         
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        logger.info(TextHelper.localize("info." + ModInformation.ID + ".console.load.init"));
-
+    	proxy.init(event);
+    	logger.info(TextHelper.localize("info." + ModInformation.ID + ".console.load.init"));
         ItemRecipeRegistry.registerItemRecipes();
         BlockRecipeRegistry.registerBlockRecipes();
         
@@ -75,9 +80,8 @@ public class BBTweaks {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        logger.info(TextHelper.localize("info." + ModInformation.ID + ".console.load.postInit"));
-        
-        	 
+    	proxy.postInit(event);
+    	logger.info(TextHelper.localize("info." + ModInformation.ID + ".console.load.postInit"));      
     }
     
 	@Mod.EventHandler

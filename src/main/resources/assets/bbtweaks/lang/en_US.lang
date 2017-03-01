@@ -15,17 +15,13 @@ command.bbtweaks.bb.try_again=Try again in %s.
 command.bbtweaks.bb.not_eligible=You aren't eligible for another Breakbit yet.
 command.bbtweaks.bb.granted=Granted your Daily Invar BreakBit!
 
-#BLOCKS
-#tile.bbtweaks.quisque.lapis.block.name=Lapis Quisque Block
-#tile.bbtweaks.quisque.lapis.ore.name=Lapis Quisque Ore
-
 #ITEMS
-item.bbtweaks.manuscript.name=Melding Manuscript
-item.bbtweaks.inertcore.name=Inert Gaia Core
-item.bbtweaks.awakenedcore.name=Awakened Gaia Core
-item.bbtweaks.purifiedwill.name=Purified Will
-item.bbtweaks.tarBall.name=Tar Ball
-item.bbtweaks.fragileActivator.name=Fragile Activation Crystal
+item.manuscript.name=Melding Manuscript
+item.inertcore.name=Inert Gaia Core
+item.awakenedcore.name=Awakened Gaia Core
+item.purifiedwill.name=Purified Will
+item.tarball.name=Tar Ball
+item.fragileActivator.name=Fragile Activation Crystal
 
 
 #TOOLTIPS
@@ -33,10 +29,10 @@ item.bbtweaks.fragileActivator.name=Fragile Activation Crystal
 tooltip.activationcrystal.fragile=Fragile Activation Crystal
 
 #Breakbits
-item.bbtweaks.breakbit_worldbreaker.name=World Breaker
-item.bbtweaks.breakbit_invar.name=Invar BreakBit
-item.bbtweaks.breakbit_electrum.name=Electrum BreakBit
-item.bbtweaks.breakbit_enderium.name=Enderium BreakBit
+item.breakbitworldbreaker.name=World Breaker
+item.breakbitinvar.name=Invar BreakBit
+item.breakbitelectrum.name=Electrum BreakBit
+item.breakbitenderium.name=Enderium BreakBit
 
 #CHAT
 #info.bbtweaks.chat.sneak=Sneak to set yourself ablaze.
