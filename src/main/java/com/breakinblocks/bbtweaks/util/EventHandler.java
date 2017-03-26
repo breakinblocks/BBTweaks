@@ -1,5 +1,9 @@
 package com.breakinblocks.bbtweaks.util;
 
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidUtil;
 import org.apache.logging.log4j.Level;
 
 import com.breakinblocks.bbtweaks.BBTweaks;
@@ -30,6 +34,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EventHandler {
+	public static boolean fluidTemperatureTooltipEnabled = true;
 
 	@SubscribeEvent
 	public void explosion(ExplosionEvent.Detonate e) {
@@ -89,5 +94,16 @@ public class EventHandler {
 			ConfigHandler.syncConfig();
 			BBTweaks.logger.info(TextHelper.localize("info." + ModInformation.ID + ".console.config.refresh"));
 		}
+	}
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onItemTooltipForFluidTemperature(ItemTooltipEvent event) {
+		if(!fluidTemperatureTooltipEnabled) return;
+		ItemStack itemStack = event.getItemStack();
+		FluidStack fluidStack = FluidUtil.getFluidContained(itemStack);
+		if(fluidStack == null) return;
+
+		event.getToolTip().add(TextHelper.localize("info." + ModInformation.ID + ".tooltip.fluid_temperature", fluidStack.getFluid().getTemperature()));
 	}
 }
