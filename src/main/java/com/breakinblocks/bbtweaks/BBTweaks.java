@@ -53,14 +53,11 @@ public class BBTweaks {
 	@Mod.Instance
 	public static BBTweaks instance;
 
-	@SuppressWarnings("deprecation")
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);
 		logger.info(TextHelper.localize("info." + ModInformation.ID + ".console.load.preInit"));
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
-		FMLCommonHandler.instance().bus().register(new EventHandler());
-
 	}
 
 	@Mod.EventHandler
