@@ -52,6 +52,15 @@ public class TextHelper {
 	}
 
 	/**
+	 * With string formatting.
+	 * @see #localize
+	 */
+	@SuppressWarnings("deprecation")
+	public static String localize(String key, Object... params) {
+		return I18n.translateToLocalFormatted(key, params);
+	}
+
+	/**
 	 * Format the time into a friendly format
 	 * 
 	 * @param range

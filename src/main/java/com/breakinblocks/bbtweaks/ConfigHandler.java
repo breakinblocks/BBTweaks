@@ -4,6 +4,7 @@ package com.breakinblocks.bbtweaks;
  * Creation and usage of the config file.
  */
 
+import com.breakinblocks.bbtweaks.util.EventHandler;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
@@ -36,6 +37,8 @@ public class ConfigHandler {
 				.get(exampleSection, "BreakbitMaximum", 32, "[1,64] Threshold for breakbit reset.").getInt();
 		exampleOption = config.get(exampleSection, "notReallyAnOption", true,
 				"if you choose not to decide, you still have made a choice.").getBoolean(exampleOption);
+		EventHandler.fluidTemperatureTooltipEnabled = config.get(exampleSection, "FluidTemperatureTooltip", true,
+				"Show fluid temperature on tooltips.").getBoolean();
 		config.save();
 	}
 }

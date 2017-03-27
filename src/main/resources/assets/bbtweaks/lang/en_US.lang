@@ -27,6 +27,7 @@ item.fragileActivator.name=Fragile Activation Crystal
 #TOOLTIPS
 #info.bbtweaks.tooltip.fire=This book will set you on fire.
 tooltip.activationcrystal.fragile=Fragile Activation Crystal
+info.bbtweaks.tooltip.fluid_temperature=Temp: %dK
 
 #Breakbits
 item.breakbitworldbreaker.name=World Breaker
